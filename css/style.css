@@ -1,0 +1,723 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@400&display=swap');
+
+/* Base styles for all pages */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  color: #333;
+}
+
+/* Shared header and footer */
+header {
+  padding: 2rem 1rem;
+}
+header h1 {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+}
+footer {
+  padding: 1rem;
+  font-size: 0.9rem;
+  background: rgba(0,0,0,0.05);
+  margin-top: 3rem;
+}
+
+/* Card style for sections */
+section.welcome {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Page-specific pastel backgrounds */
+body.index           { background: #FFFBF0; }
+body.quiet-bench     { background: #E3F9E5; }
+body.study-table     { background: #FFF3E0; }
+body.little-studio   { background: #E8EAF6; }
+body.pocket-quotes   { background: #FCE4EC; }
+body.pathways        { background: #E0F7FA; }
+body.about-hanif     { background: #F3E5F5; }
+
+/* Section backgrounds to match pages */
+body.index           section.welcome { background: #FFF5E1; }
+body.quiet-bench     section.welcome { background: #DFFCF0; }
+body.study-table     section.welcome { background: #FFF8E1; }
+body.little-studio   section.welcome { background: #EDE7F6; }
+body.pocket-quotes   section.welcome { background: #FDE8EE; }
+body.pathways        section.welcome { background: #E0F7FA; }
+body.about-hanif     section.welcome { background: #F4E5F8; }
+/* Smaller Home Photo */
+.home-photo {
+  width: 100%;
+  max-width: 250px;   /* adjust this value as you like */
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+/* Site-Wide Navigation */
+
+header {
+  background-color: #f5f5f5;
+  padding: 1rem 0;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+}
+
+nav a:hover {
+  border-bottom: 2px solid #ff6f61;
+}
+nav a {
+  color: #333;
+  text-decoration: none;
+  padding: 0.5rem;
+  transition: color 0.2s, border-bottom 0.2s;
+}
+
+nav a.active {
+  color: #f05a28;            /* your accent color */
+  border-bottom: 2px solid #f05a28;
+  font-weight: 600;
+}
+/* Active-link styling */
+nav a {
+  color: #333;
+  text-decoration: none;
+  padding: 0.5rem;
+  transition: color 0.2s, border-bottom 0.2s;
+}
+
+body.index    nav a[href="index.html"],
+body.quiet-bench nav a[href="quiet-bench.html"],
+body.study-table nav a[href="study-table.html"],
+body.little-studio nav a[href="little-studio.html"],
+body.pocket-quotes nav a[href="pocket-quotes.html"],
+body.pathways nav a[href="pathways.html"],
+body.about-hanif  nav a[href="about-hanif.html"]
+{
+  color: #f05a28;
+  border-bottom: 2px solid #f05a28;
+  font-weight: 600;
+}
+/* Quiet Bench */
+.reflection {
+  background: #f5f0e1;
+  padding: 1rem 1.5rem;
+  margin: 2rem auto;
+  border-left: 4px solid #f05a28;
+  max-width: 600px;
+}
+.reflection blockquote {
+  margin: 0;
+  font-style: italic;
+  color: #555;
+}
+.reflection cite {
+  display: block;
+  margin-top: 0.5rem;
+  text-align: right;
+  color: #888;
+}
+.thought-box {
+  background: #fffbea;
+  padding: 1rem;
+  margin: 1.5rem auto;
+  border-radius: 8px;
+  max-width: 600px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.thought-box h3 {
+  margin-top: 0;
+}
+
+/* Study Table */
+.golden-tip {
+  background: #e8f1ff;
+  padding: 1rem;
+  margin: 1.5rem auto;
+  border-left: 4px solid #2196f3;
+  max-width: 600px;
+  font-weight: 500;
+}
+.resources {
+  text-align: left;
+  max-width: 600px;
+  margin: 1rem auto;
+}
+details {
+  max-width: 600px;
+  margin: 0.5rem auto;
+  text-align: left;
+}
+
+/* Little Studio */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 1rem auto;
+}
+.video-item iframe {
+  width: 100%;
+  height: 180px;
+  border-radius: 8px;
+}
+.doodle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(120px,1fr));
+  gap: 0.75rem;
+  max-width: 600px;
+  margin: 1rem auto;
+}
+.doodle-grid img {
+  border: 3px solid #f3e5f5;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+.doodle-grid img:hover {
+  transform: scale(1.05);
+}
+.polaroid-strip {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+}
+.polaroid {
+  width: 150px;
+  padding: 0.5rem;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transform: rotate(-2deg);
+}
+.polaroid:nth-child(even) {
+  transform: rotate(2deg);
+}
+
+/* Pocket Quotes / Carousel */
+.carousel {
+  max-width: 500px;
+  margin: 2rem auto;
+  text-align: center;
+}
+.quote-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  position: relative;
+}
+.quote-card p {
+  margin: 0.5rem 0;
+}
+.filter-tags {
+  margin-top: 1rem;
+}
+.filter-tags button {
+  background: #f3e5f5;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.25rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.filter-tags button:hover,
+.filter-tags button.active {
+  background: #e1bee7;
+}
+
+/* Pathways Timeline */
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 1rem auto;
+}
+.milestone {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+.milestone:hover {
+  transform: scale(1.03);
+}
+.milestone .date {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* About Hanif */
+.intro h2 {
+  max-width: 600px;
+  margin: 1rem auto;
+  font-style: italic;
+}
+.skills {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+.badge {
+  display: inline-block;
+  background: #e8f5e9;
+  margin: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+.story-timeline {
+  max-width: 600px;
+  margin: 1rem auto;
+}
+.story-timeline ol {
+  padding-left: 1.5rem;
+}
+.contact form {
+  max-width: 400px;
+  margin: 1rem auto;
+  text-align: left;
+}
+.contact input,
+.contact textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.button {
+  background: #2196f3;
+  color: #fff;
+}
+
+/* Utility: hide default focus outline for nicer styling */
+button:focus,
+a:focus {
+  outline: none;
+}
+/* Hero Section */
+.hero {
+  padding: 4rem 1rem;
+  background: linear-gradient(160deg, #d0e8ff, #ffffff);
+  text-align: center;
+}
+.hero-img {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.subline {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+}
+.hero-quote {
+  font-style: italic;
+  color: #555;
+  max-width: 600px;
+  margin: 1rem auto 0;
+  position: relative;
+}
+.hero-quote::before {
+  content: "🖋️";
+  position: absolute;
+  left: -1.5rem;
+  top: -0.25rem;
+  font-size: 1.2rem;
+}
+
+/* Quick Peek Navigation */
+.peek-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+.peek-nav .card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1rem;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+}
+.peek-nav .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.peek
+/* Home Page Specific Styles */
+
+/* 1. Hero Section */
+.hero {
+  padding: 4rem 1rem;
+  background: linear-gradient(160deg, #d0e8ff, #ffffff);
+  color: #1a1a1a;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 2.75rem;
+  margin-bottom: 0.5rem;
+}
+.hero .subline {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+.hero-quote {
+  max-width: 600px;
+  margin: 0 auto;
+  font-style: italic;
+  color: #555;
+  position: relative;
+}
+.hero-quote::before {
+  content: "🖋️";
+  position: absolute;
+  left: -1.5rem;
+  top: -0.25rem;
+  font-size: 1.5rem;
+}
+
+/* 2. Quick Peek Navigation */
+.peek-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+.peek-nav .card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+}
+.peek-nav .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.peek-nav .icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* 3. Featured Section */
+.featured {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 2.5rem auto;
+  padding: 0 1rem;
+}
+.featured .video-feature,
+.featured .quote-feature {
+  flex: 1 1 350px;
+}
+.featured iframe {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+}
+.quote-feature blockquote {
+  background: #fffafa;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+  font-style: italic;
+  position: relative;
+}
+.quote-feature cite {
+  display: block;
+  text-align: right;
+  margin-top: 0.5rem;
+  color: #777;
+}
+
+/* 4. Hanif Today Box */
+.today-box {
+  background: #fffbeb;
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-family: 'Architects Daughter', cursive;
+  text-align: left;
+}
+.today-box h2 {
+  margin-top: 0;
+}
+
+/* 5. Soft Footer */
+.soft-footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: #f5f5f5;
+  position: relative;
+}
+.soft-footer .social {
+  margin: 1rem 0;
+}
+.soft-footer .social img {
+  width: 24px;
+  margin: 0 0.5rem;
+  filter: grayscale(50%);
+  transition: filter 0.2s;
+}
+.soft-footer .social img:hover {
+  filter: none;
+}
+#back-to-top {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  background: #e0f7fa;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 1.25rem;
+  display: none;
+}
+body.scroll-down #back-to-top {
+  display: block;
+}
+
+/* Show “Back to Top” when user scrolls */
+window.addEventListener('scroll', () => {
+  document.body.classList.toggle('scroll-down', window.scrollY > 200);
+});
+/* ─── Layout Utilities ─── */
+
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+/* Horizontal modes on desktop */
+@media (min-width: 768px) {
+  .layout--left    { flex-direction: row;     }
+  .layout--right   { flex-direction: row-reverse; }
+  .layout--center  { flex-direction: column; text-align: center; }
+}
+
+/* Vertical alignment within flex container */
+.align-top    { align-items: flex-start;   }
+.align-middle { align-items: center;       }
+.align-bottom { align-items: flex-end;     }
+
+/* Control widths of image & content on desktop */
+@media (min-width: 768px) {
+  .layout .section-img     { flex: 0 0 40%;  }
+  .layout .section-content { flex: 1;        }
+}
+
+/* Helper: make images responsive in layout */
+.layout .section-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Optional: add subtle fade-in on load */
+.layout { opacity: 0; animation: fadeInUp 0.5s ease-out 0.2s forwards; }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0);     }
+}
+/* ─── Mobile Tweaks @ max-width:767px ─── */
+@media (max-width: 767px) {
+  /* Hero tweaks */
+  .hero {
+    padding: 2rem 1rem;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero .subline {
+    font-size: 0.9rem;
+  }
+
+  /* Quick Peek: stack cards in one column */
+  .peek-nav {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem;
+  }
+  .peek-nav .card {
+    padding: 0.75rem;
+  }
+
+  /* Featured section: stack video + quote */
+  .featured {
+    flex-direction: column !important;
+    gap: 1.5rem;
+  }
+  .featured iframe {
+    height: 250px;
+  }
+
+  /* Hanif Today box: smaller text */
+  .today-box {
+    padding: 1rem;
+  }
+  .today-box p {
+    font-size: 0.95rem;
+  }
+
+  /* Back-to-Top button: smaller on mobile */
+  #back-to-top {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+}
+/* ─── Mobile Portrait: Stack the Nav Links ─── */
+@media (max-width: 767px) {
+  /* Target the nav list itself */
+  nav ul {
+    flex-direction: column;    /* stack items vertically */
+    align-items: stretch;      /* make each link fill the width */
+    gap: 0;                    /* remove any horizontal gap */
+    padding: 0;                /* reset padding if necessary */
+  }
+
+  /* Each list item full width */
+  nav li {
+    width: 100%;
+    margin: 0;                 /* remove side margins */
+  }
+
+  /* Style each link like a block button */
+  nav a {
+    display: block;            /* lets us set width & padding */
+    width: 100%;
+    padding: 0.75rem 1rem;     /* comfortable tap area */
+    text-align: center;        /* center the text */
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  /* Optionally change hover / active look */
+  nav a:hover,
+  nav a.active {
+    background-color: #e0f7fa;
+  }
+}
+/* Hover Bounce for Cards & Buttons */
+.peek-nav .card,
+.video-item iframe,
+.doodle-grid img,
+.filter-tags button,
+.milestone,
+.badge,
+.soft-footer .social img {
+  transition: transform 0.25s ease-out, box-shadow 0.25s;
+}
+
+.peek-nav .card:hover,
+.video-item iframe:hover,
+.doodle-grid img:hover,
+.filter-tags button:hover,
+.milestone:hover,
+.badge:hover,
+.soft-footer .social img:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+/* Scroll-Into-View Fade-In */
+.fade-in-hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Skip-to-Content Link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #2196f3;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+.skip-link:focus {
+  top: 0;
+}
+/* 3.6 Universal Focus Outline */
+
+:focus {
+  outline: 3px dashed #f05a28;
+  outline-offset: 3px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Skip-link styles (if not already added) */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #2196f3;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+.skip-link:focus {
+  top: 0;
+}
