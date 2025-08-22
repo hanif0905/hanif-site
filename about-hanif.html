@@ -90,18 +90,26 @@
 
     <section class="contact">
       <h3>Say hello, I’d love to hear from you.</h3>
-      <form action="#" method="POST">
-          <label for="name">Name</label><br>
-  <input type="text" id="name" name="name" required><br>
-
-  <label for="email">Email</label><br>
-  <input type="email" id="email" name="email" required><br>
-
-  <label for="message">Message</label><br>
-  <textarea id="message" name="message" rows="4" required></textarea><br>
-
-  <button type="submit">Send Message</button>
-      </form>
+      <form
+  action="https://formspree.io/f/myzpreqq"
+  method="POST"
+>
+  <label>
+    Name
+    <input type="text" name="name" required/>
+  </label>
+  <label>
+    Email
+    <input type="email" name="_replyto" required/>
+  </label>
+  <label>
+    Message
+    <textarea name="message" required></textarea>
+  </label>
+  <!-- Optional: set an email subject -->
+  <input type="hidden" name="_subject" value="New Contact Form Submission"/>
+  <button type="submit">Send</button>
+</form>
     </section>
 
     <section class="fun-facts">
