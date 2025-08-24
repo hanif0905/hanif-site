@@ -886,3 +886,15 @@ window.addEventListener('scroll', () => {
   .nav-menu ul { display: flex; gap: 1rem; }
   .nav-search-bar { width: 14rem; }
 }
+/* ensure header elements line up horizontally */
+.nav-container {
+  display: flex;
+  align-items: center;
+}
+
+/* the hamburger (first child) stays at the left implicitly */
+
+/* push the search bar to the extreme right */
+.nav-search-bar {
+  margin-left: auto;
+}
