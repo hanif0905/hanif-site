@@ -783,3 +783,23 @@ window.addEventListener('scroll', () => {
 .search-fab:hover {
   background: #0056b3;
 }
+/* Container pushes the search bar to the far right */
+.search-bar-container {
+  margin-left: auto;
+}
+
+/* The actual search input styling */
+.nav-search-bar {
+  height: 2rem;
+  padding: 0 0.5rem;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.nav-search-bar:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
