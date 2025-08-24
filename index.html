@@ -62,31 +62,40 @@
 <body class="…">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 <header>
-    <h1>Hanif’s World</h1>
-    <nav aria-label="Main navigation">
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="quiet-bench.html">Quiet Bench</a></li>
-    <li><a href="study-table.html">Study Table</a></li>
-    <li><a href="little-studio.html">Little Studio</a></li>
-    <li><a href="pocket-quotes.html">Pocket Quotes</a></li>
-    <li><a href="pathways.html">Pathways</a></li>
-    <li><a href="about-hanif.html">About Hanif</a></li>
+  <div class="nav-container">
+    <!-- Hamburger toggle -->
+    <button id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
 
-    <!-- New search-bar container: pushes itself to the right -->
-    <li class="search-bar-container">
-      <input
-        id="nav-search-input"
-        class="nav-search-bar"
-        type="search"
-        placeholder="Search…"
-        aria-label="Search the site"
-      />
-    </li>
-  </ul>
-</nav>
+    <!-- Site title -->
+    <h1 class="site-title">
+      <a href="index.html">Hanif’s World</a>
+    </h1>
+
+    <!-- Nav links -->
+    <nav id="nav-menu" class="nav-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quiet-bench.html">Quiet Bench</a></li>
+        <li><a href="study-table.html">Study Table</a></li>
+        <li><a href="little-studio.html">Little Studio</a></li>
+        <li><a href="pocket-quotes.html">Pocket Quotes</a></li>
+        <li><a href="pathways.html">Pathways</a></li>
+        <li><a href="about-hanif.html">About Hanif</a></li>
+      </ul>
     </nav>
-  </header>
+
+    <!-- Inline search -->
+    <input
+      id="nav-search-input"
+      class="nav-search-bar"
+      type="search"
+      placeholder="Search…"
+      aria-label="Search the site"
+    />
+  </div>
+</header>
   <section class="hero layout layout--left align-middle">
   <div class="section-img">
    <img
@@ -205,5 +214,26 @@
 <a href="search.html" class="search-fab" aria-label="Search">
   <i class="fas fa-search" aria-hidden="true"></i>
 </a>
+<!-- Font Awesome for hamburger icon -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+  integrity="sha512-...replace-with-latest-hash..." crossorigin="anonymous" referrerpolicy="no-referrer">
+</script>
+
+<!-- Nav toggle and Search-on-Enter script -->
+<script>
+  // Hamburger toggle
+  document.getElementById('nav-toggle').addEventListener('click', () => {
+    document.getElementById('nav-menu').classList.toggle('open');
+  });
+
+  // Search on Enter
+  const navSearch = document.getElementById('nav-search-input');
+  navSearch.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && navSearch.value.trim()) {
+      const q = encodeURIComponent(navSearch.value.trim());
+      window.location.href = `search.html?q=${q}`;
+    }
+  });
+</script>
 </body>
 </html>

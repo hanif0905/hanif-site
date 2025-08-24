@@ -803,3 +803,86 @@ window.addEventListener('scroll', () => {
   border-color: #007bff;
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
+/* NAV CONTAINER */
+.nav-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  position: relative;
+}
+
+/* HAMBURGER BUTTON */
+.nav-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* SITE TITLE */
+.site-title {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* NAV MENU */
+.nav-menu {
+  position: absolute;
+  top: 100%;
+  right: 1rem;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.nav-menu.open {
+  max-height: 500px; /* big enough to show all links */
+}
+.nav-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-menu li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+.nav-menu li a:hover {
+  background: #f0f0f0;
+}
+
+/* SEARCH BAR */
+.nav-search-bar {
+  margin-left: auto;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  width: 12rem;
+  transition: border-color 0.2s ease;
+}
+.nav-search-bar:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* OPTIONAL: hide nav-menu on large screens, show inline */
+@media (min-width: 768px) {
+  .nav-toggle { display: none; }
+  .nav-menu {
+    position: static;
+    max-height: none;
+    display: block;
+    border: none;
+    box-shadow: none;
+  }
+  .nav-menu ul { display: flex; gap: 1rem; }
+  .nav-search-bar { width: 14rem; }
+}

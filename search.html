@@ -47,3 +47,36 @@
   </script>
 </body>
 </html>
+<script>
+  // Grab the query from URL
+  const params = new URLSearchParams(location.search);
+  const initial = params.get('q') || '';
+  const input = document.getElementById('search-input');
+  const results = document.getElementById('results');
+
+  fetch('data/search.json')
+    .then(r => r.json())
+    .then(data => {
+      const fuse = new Fuse(data, { keys: ['title','description'], threshold: 0.3 });
+      const doSearch = (term) => {
+        const hits = term ? fuse.search(term) : [];
+        results.innerHTML = hits.map(h => `
+          <li>
+            <a href="${h.item.url}">
+              <strong>${h.item.title}</strong><br/>
+              <small>${h.item.description}</small>
+            </a>
+          </li>
+        `).join('') || `<li>No results for “${term}”</li>`;
+      };
+
+      // If we landed with a query, run it now
+      if (initial) {
+        input.value = initial;
+        doSearch(initial);
+      }
+
+      // Live search on typing
+      input.addEventListener('input', () => doSearch(input.value));
+    });
+</script>

@@ -43,33 +43,41 @@
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body class="study-table">
-
   <header>
-    <h1>Study Table</h1>
-    <nav aria-label="Main navigation">
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="quiet-bench.html">Quiet Bench</a></li>
-    <li><a href="study-table.html">Study Table</a></li>
-    <li><a href="little-studio.html">Little Studio</a></li>
-    <li><a href="pocket-quotes.html">Pocket Quotes</a></li>
-    <li><a href="pathways.html">Pathways</a></li>
-    <li><a href="about-hanif.html">About Hanif</a></li>
+  <div class="nav-container">
+    <!-- Hamburger toggle -->
+    <button id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
 
-    <!-- New search-bar container: pushes itself to the right -->
-    <li class="search-bar-container">
-      <input
-        id="nav-search-input"
-        class="nav-search-bar"
-        type="search"
-        placeholder="Search…"
-        aria-label="Search the site"
-      />
-    </li>
-  </ul>
-</nav>
-  </header>
+    <!-- Site title -->
+    <h1 class="site-title">
+      <a href="index.html">Hanif’s World</a>
+    </h1>
 
+    <!-- Nav links -->
+    <nav id="nav-menu" class="nav-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quiet-bench.html">Quiet Bench</a></li>
+        <li><a href="study-table.html">Study Table</a></li>
+        <li><a href="little-studio.html">Little Studio</a></li>
+        <li><a href="pocket-quotes.html">Pocket Quotes</a></li>
+        <li><a href="pathways.html">Pathways</a></li>
+        <li><a href="about-hanif.html">About Hanif</a></li>
+      </ul>
+    </nav>
+
+    <!-- Inline search -->
+    <input
+      id="nav-search-input"
+      class="nav-search-bar"
+      type="search"
+      placeholder="Search…"
+      aria-label="Search the site"
+    />
+  </div>
+</header>
   <main id="main-content">
     <section class="learning layout layout--right align-top fade-in">
       <div class="section-img">
@@ -102,6 +110,26 @@
   <footer>
     <p>© 2025 Hanif’s Corner</p>
   </footer>
+<!-- Font Awesome for hamburger icon -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+  integrity="sha512-...replace-with-latest-hash..." crossorigin="anonymous" referrerpolicy="no-referrer">
+</script>
 
+<!-- Nav toggle and Search-on-Enter script -->
+<script>
+  // Hamburger toggle
+  document.getElementById('nav-toggle').addEventListener('click', () => {
+    document.getElementById('nav-menu').classList.toggle('open');
+  });
+
+  // Search on Enter
+  const navSearch = document.getElementById('nav-search-input');
+  navSearch.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && navSearch.value.trim()) {
+      const q = encodeURIComponent(navSearch.value.trim());
+      window.location.href = `search.html?q=${q}`;
+    }
+  });
+</script>
 </body>
 </html>
