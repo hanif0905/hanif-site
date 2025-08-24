@@ -898,3 +898,85 @@ window.addEventListener('scroll', () => {
 .nav-search-bar {
   margin-left: auto;
 }
+/* 1. Container aligns items horizontally */
+.nav-container {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  position: relative;
+}
+
+/* 2. Hamburger button on left */
+.nav-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* 3. Dropdown nav menu (initially hidden) */
+.nav-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+.nav-menu.open {
+  max-height: 500px; /* enough to show all links */
+}
+.nav-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-menu li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+.nav-menu li a:hover {
+  background: #f0f0f0;
+}
+
+/* 4. Push search bar to the far right */
+.nav-search-bar {
+  margin-left: auto;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  width: 12rem;
+  transition: border-color 0.2s ease;
+}
+.nav-search-bar:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* 5. Desktop: show nav inline, hide hamburger */
+@media (min-width: 768px) {
+  .nav-toggle { display: none; }
+  .nav-menu {
+    position: static;
+    display: block;
+    max-height: none;
+    border: none;
+    box-shadow: none;
+  }
+  .nav-menu ul {
+    display: flex;
+    gap: 1rem;
+  }
+  .nav-search-bar {
+    width: 14rem;
+  }
+}
