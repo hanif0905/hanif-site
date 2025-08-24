@@ -94,21 +94,11 @@
   action="https://formspree.io/f/myzpreqq"
   method="POST"
 >
-  <label>
-    Name
-    <input type="text" name="name" required/>
-  </label>
-  <label>
-    Email
-    <input type="email" name="_replyto" required/>
-  </label>
-  <label>
-    Message
-    <textarea name="message" required></textarea>
-  </label>
-  <!-- Optional: set an email subject -->
-  <input type="hidden" name="_subject" value="New Contact Form Submission"/>
-  <button type="submit">Send</button>
+  <input type="text"   name="name"     placeholder="Your Name"      required>
+  <input type="email"  name="_replyto" placeholder="you@example.com" required>
+  <textarea name="message" placeholder="Your message…" required></textarea>
+  <input type="hidden" name="_subject" value="Contact from Hanif’s site">
+  <button>Send</button>
 </form>
     </section>
 
