@@ -45,30 +45,7 @@
 <body class="about-hanif">
   <header>
   <div class="nav-container">
-    <!-- 1. Hamburger toggle -->
-    <button id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">
-      &#9776;
-    </button>
-
-    <!-- 2. Site title -->
-    <h1 class="site-title">
-      <a href="index.html">Hanif’s World</a>
-    </h1>
-
-    <!-- 3. Dropdown nav menu -->
-    <nav id="nav-menu" class="nav-menu">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="quiet-bench.html">Quiet Bench</a></li>
-        <li><a href="study-table.html">Study Table</a></li>
-        <li><a href="little-studio.html">Little Studio</a></li>
-        <li><a href="pocket-quotes.html">Pocket Quotes</a></li>
-        <li><a href="pathways.html">Pathways</a></li>
-        <li><a href="about-hanif.html">About Hanif</a></li>
-      </ul>
-    </nav>
-
-    <!-- 4. Inline search bar -->
+    <!-- 1. Search bar on the left -->
     <input
       id="nav-search-input"
       class="nav-search-bar"
@@ -76,6 +53,33 @@
       placeholder="Search…"
       aria-label="Search the site"
     />
+
+    <!-- 2. Centered site title -->
+    <h1 class="site-title">
+      <a href="index.html">Hanif’s World</a>
+    </h1>
+
+    <!-- 3. Dropdown menu on the right -->
+    <div class="menu-container">
+      <button
+        id="nav-toggle"
+        class="nav-toggle"
+        aria-label="Toggle pages menu"
+      >
+        &#9776;
+      </button>
+      <nav id="nav-menu" class="nav-menu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="quiet-bench.html">Quiet Bench</a></li>
+          <li><a href="study-table.html">Study Table</a></li>
+          <li><a href="little-studio.html">Little Studio</a></li>
+          <li><a href="pocket-quotes.html">Pocket Quotes</a></li>
+          <li><a href="pathways.html">Pathways</a></li>
+          <li><a href="about-hanif.html">About Hanif</a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>
   <main id="main-content">
@@ -163,48 +167,35 @@
     }
   });
 </script>
-  <!-- Fuse.js from CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+  <!-- Fuse.js + toggle/search logic -->
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+<script>
+  // Toggle the dropdown menu
+  document.getElementById('nav-toggle')
+    .addEventListener('click', () => {
+      document.getElementById('nav-menu').classList.toggle('open');
+    });
 
-  <script>
-    // 1. Toggle the dropdown menu
-    document.getElementById('nav-toggle')
-      .addEventListener('click', () => {
-        document.getElementById('nav-menu')
-          .classList.toggle('open');
-      });
-
-    // 2. Direct search-on-Enter
-    ;(function() {
-      const input = document.getElementById('nav-search-input');
-      let dataPromise;
-
-      input.addEventListener('keydown', async e => {
-        if (e.key !== 'Enter') return;
-        e.preventDefault();
-        
-        const term = input.value.trim();
-        if (!term) return;
-
-        // Load search data once
-        dataPromise = dataPromise ||
-          fetch('/data/search.json').then(r => r.json());
-        const data = await dataPromise;
-
-        // Fuzzy-search with Fuse.js
-        const results = new Fuse(data, {
-          keys: ['title', 'description'],
-          threshold: 0.3
-        }).search(term);
-
-        // Redirect to top hit, or home
-        if (results.length) {
-          window.location.href = results[0].item.url;
-        } else {
-          window.location.href = 'index.html';
-        }
-      });
-    })();
-  </script>
+  // Redirect on Enter
+  (function() {
+    const input = document.getElementById('nav-search-input');
+    let dataPromise;
+    input.addEventListener('keydown', async e => {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      const term = input.value.trim();
+      if (!term) return;
+      dataPromise = dataPromise ||
+        fetch('/data/search.json').then(r => r.json());
+      const data = await dataPromise;
+      const results = new Fuse(data, {
+        keys: ['title','description'],
+        threshold: 0.3
+      }).search(term);
+      window.location.href =
+        results.length ? results[0].item.url : 'index.html';
+    });
+  })();
+</script>
 </body>
 </html>
