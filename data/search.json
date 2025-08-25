@@ -1,5 +1,10 @@
 [
   {
+    "title": "Home",
+    "description": "Welcome to Hanif’s World",
+    "url": "index.html"
+  },
+  {
     "title": "Quiet Bench",
     "description": "Moments of stillness, reflections, and gentle pauses.",
     "url": "quiet-bench.html"
@@ -23,5 +28,10 @@
     "title": "Pathways",
     "description": "A visual timeline of Hanif’s personal and creative journey.",
     "url": "pathways.html"
+  },
+  {
+    "title": "About Hanif",
+    "description": "Background, skills, life’s turning points, and fun facts.",
+    "url": "about-hanif.html"
   }
 ]
