@@ -169,5 +169,163 @@
     });
   })();
 </script>
+<!-- Fuse.js engine -->
+<script src="js/fuse.min.js"></script>
+
+<script>
+  // 1. Toggle the dropdown menu
+  document.getElementById('nav-toggle').addEventListener('click', () => {
+    document.getElementById('nav-menu').classList.toggle('open');
+  });
+
+  // 2. Direct search-on-Enter
+  (function() {
+    const input = document.getElementById('nav-search-input');
+    let dataPromise;
+
+    input.addEventListener('keydown', async (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const term = input.value.trim();
+        if (!term) return;
+
+        // Fetch or reuse the JSON data once
+        dataPromise = dataPromise || fetch('/data/search.json').then(r => r.json());
+        const data = await dataPromise;
+
+        // Fuzzy-match
+        const fuse = new Fuse(data, {
+          keys: ['title','description'],
+          threshold: 0.3
+        });
+        const results = fuse.search(term);
+
+        // Redirect to top result, or to Home if none
+        if (results.length > 0) {
+          window.location.href = results[0].item.url;
+        } else {
+          window.location.href = 'index.html';
+        }
+      }
+    });
+  })();
+</script>
+<script src="js/fuse.min.js"></script>
+<script>
+  // Toggle the dropdown menu
+  document.getElementById('nav-toggle')
+    .addEventListener('click', () => {
+      document.getElementById('nav-menu')
+        .classList.toggle('open');
+    });
+
+  // Direct search-on-Enter
+  (function() {
+    const input = document.getElementById('nav-search-input');
+    let dataPromise;
+
+    input.addEventListener('keydown', async (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const term = input.value.trim();
+        if (!term) return;
+
+        dataPromise = dataPromise || 
+          fetch('/data/search.json').then(r => r.json());
+        const data = await dataPromise;
+
+        const fuse = new Fuse(data, {
+          keys: ['title','description'],
+          threshold: 0.3
+        });
+        const results = fuse.search(term);
+
+        if (results.length) {
+          window.location.href = results[0].item.url;
+        } else {
+          window.location.href = 'index.html';
+        }
+      }
+    });
+  })();
+</script>
+<script src="js/fuse.min.js"></script>
+<script>
+  // Toggle the dropdown menu
+  document.getElementById('nav-toggle')
+    .addEventListener('click', () => {
+      document.getElementById('nav-menu')
+        .classList.toggle('open');
+    });
+
+  // Direct search-on-Enter
+  (function() {
+    const input = document.getElementById('nav-search-input');
+    let dataPromise;
+
+    input.addEventListener('keydown', async (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const term = input.value.trim();
+        if (!term) return;
+
+        dataPromise = dataPromise || 
+          fetch('/data/search.json').then(r => r.json());
+        const data = await dataPromise;
+
+        const fuse = new Fuse(data, {
+          keys: ['title','description'],
+          threshold: 0.3
+        });
+        const results = fuse.search(term);
+
+        if (results.length) {
+          window.location.href = results[0].item.url;
+        } else {
+          window.location.href = 'index.html';
+        }
+      }
+    });
+  })();
+</script>
+<script src="js/fuse.min.js"></script>
+<script>
+  // Toggle the dropdown menu
+  document.getElementById('nav-toggle')
+    .addEventListener('click', () => {
+      document.getElementById('nav-menu')
+        .classList.toggle('open');
+    });
+
+  // Direct search-on-Enter
+  (function() {
+    const input = document.getElementById('nav-search-input');
+    let dataPromise;
+
+    input.addEventListener('keydown', async (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const term = input.value.trim();
+        if (!term) return;
+
+        dataPromise = dataPromise || 
+          fetch('/data/search.json').then(r => r.json());
+        const data = await dataPromise;
+
+        const fuse = new Fuse(data, {
+          keys: ['title','description'],
+          threshold: 0.3
+        });
+        const results = fuse.search(term);
+
+        if (results.length) {
+          window.location.href = results[0].item.url;
+        } else {
+          window.location.href = 'index.html';
+        }
+      }
+    });
+  })();
+</script>
 </body>
 </html>

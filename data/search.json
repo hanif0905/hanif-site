@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Quiet Bench",
+    "description": "Moments of stillness, reflections, and gentle pauses.",
+    "url": "quiet-bench.html"
+  },
+  {
+    "title": "Study Table",
+    "description": "Notes, resources, and code snippets to fuel your learning.",
+    "url": "study-table.html"
+  },
+  {
+    "title": "Little Studio",
+    "description": "Featured videos, doodles, and behind-the-scenes glimpses.",
+    "url": "little-studio.html"
+  },
+  {
+    "title": "Pocket Quotes",
+    "description": "Inspirational quotes on life, faith, courage, and more.",
+    "url": "pocket-quotes.html"
+  },
+  {
+    "title": "Pathways",
+    "description": "A visual timeline of Hanif’s personal and creative journey.",
+    "url": "pathways.html"
+  }
+]
