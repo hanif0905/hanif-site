@@ -1143,3 +1143,15 @@ window.addEventListener('scroll', () => {
     gap: 1rem;
   }
 }
+/* ─── HAMBURGER TOGGLE (keep this single instance) ───────────────────────── */
+
+.nav-toggle {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
