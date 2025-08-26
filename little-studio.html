@@ -131,43 +131,44 @@
   <footer>
     <p>© 2025 Hanif’s Corner</p>
   </footer>
-<!-- Fuse.js from CDN for fuzzy searching -->
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+  <!-- Fuse.js from CDN for fuzzy searching -->
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
 
-<script>
-  // Toggle the dropdown menu
-  document.getElementById('nav-toggle')
-    .addEventListener('click', () => {
-      document.getElementById('nav-menu').classList.toggle('open');
-    });
+  <script>
+    // 1. Hamburger open/close
+    document.getElementById('nav-toggle')
+      .addEventListener('click', () => {
+        document.getElementById('nav-menu').classList.toggle('open');
+      });
 
-  // Redirect on Enter in the search bar
-  (function() {
-    const input = document.getElementById('nav-search-input');
-    let dataPromise;
+    // 2. Search-on-Enter redirect
+    (function() {
+      const input = document.getElementById('nav-search-input');
+      let dataPromise;
+      
+      input.addEventListener('keydown', async e => {
+        if (e.key !== 'Enter') return;
+        e.preventDefault();
+        const term = input.value.trim();
+        if (!term) return;
 
-    input.addEventListener('keydown', async e => {
-      if (e.key !== 'Enter') return;
-      e.preventDefault();
-      const term = input.value.trim();
-      if (!term) return;
+        // Load search data only once
+        dataPromise = dataPromise ||
+          fetch('/data/search.json').then(r => r.json());
+        const data = await dataPromise;
 
-      // Load search data once
-      dataPromise = dataPromise || fetch('/data/search.json').then(r => r.json());
-      const data = await dataPromise;
+        // Fuse search
+        const results = new Fuse(data, {
+          keys: ['title','description'],
+          threshold: 0.3
+        }).search(term);
 
-      // Run Fuse.js
-      const results = new Fuse(data, {
-        keys: ['title', 'description'],
-        threshold: 0.3
-      }).search(term);
-
-      // Go to the top match or home
-      window.location.href = results.length
-        ? results[0].item.url
-        : 'index.html';
-    });
-  })();
-</script>
+        // Go to top match or home
+        window.location.href = results.length
+          ? results[0].item.url
+          : 'index.html';
+      });
+    })();
+  </script>
 </body>
 </html>
