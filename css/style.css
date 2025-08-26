@@ -804,443 +804,52 @@ window.addEventListener('scroll', () => {
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 /* NAV CONTAINER */
+/* ─── NAVIGATION (BEGIN REPLACEMENT) ───────────────────────────────── */
+
 .nav-container {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.5rem 1rem;
   position: relative;
+  text-align: center;
+  padding: 0.5rem 1rem;
 }
 
-/* HAMBURGER BUTTON */
+/* 1. Hamburger on far left */
 .nav-toggle {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
   background: none;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
 }
 
-/* SITE TITLE */
+/* 2. Centered site title */
 .site-title {
   margin: 0;
-  flex-shrink: 0;
+  display: inline-block;
 }
 
-/* NAV MENU */
-.nav-menu {
+/* 3. Search bar on far right */
+.nav-search-bar {
   position: absolute;
-  top: 100%;
   right: 1rem;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-.nav-menu.open {
-  max-height: 500px; /* big enough to show all links */
-}
-.nav-menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.nav-menu li a {
-  display: block;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  color: inherit;
-}
-.nav-menu li a:hover {
-  background: #f0f0f0;
-}
-
-/* SEARCH BAR */
-.nav-search-bar {
-  margin-left: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12rem;
   padding: 0.3rem 0.5rem;
   font-size: 0.9rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   outline: none;
-  width: 12rem;
-  transition: border-color 0.2s ease;
-}
-.nav-search-bar:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-}
-
-/* OPTIONAL: hide nav-menu on large screens, show inline */
-@media (min-width: 768px) {
-  .nav-toggle { display: none; }
-  .nav-menu {
-    position: static;
-    max-height: none;
-    display: block;
-    border: none;
-    box-shadow: none;
-  }
-  .nav-menu ul { display: flex; gap: 1rem; }
-  .nav-search-bar { width: 14rem; }
-}
-/* ensure header elements line up horizontally */
-.nav-container {
-  display: flex;
-  align-items: center;
-}
-
-/* the hamburger (first child) stays at the left implicitly */
-
-/* push the search bar to the extreme right */
-.nav-search-bar {
-  margin-left: auto;
-}
-/* 1. Container aligns items horizontally */
-.nav-container {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  position: relative;
-}
-
-/* 2. Hamburger button on left */
-.nav-toggle {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-/* 3. Dropdown nav menu (initially hidden) */
-.nav-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-}
-.nav-menu.open {
-  max-height: 500px; /* enough to show all links */
-}
-.nav-menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.nav-menu li a {
-  display: block;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  color: inherit;
-}
-.nav-menu li a:hover {
-  background: #f0f0f0;
-}
-
-/* 4. Push search bar to the far right */
-.nav-search-bar {
-  margin-left: auto;
-  padding: 0.3rem 0.5rem;
-  font-size: 0.9rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-  width: 12rem;
-  transition: border-color 0.2s ease;
-}
-.nav-search-bar:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-}
-
-/* 5. Desktop: show nav inline, hide hamburger */
-@media (min-width: 768px) {
-  .nav-toggle { display: none; }
-  .nav-menu {
-    position: static;
-    display: block;
-    max-height: none;
-    border: none;
-    box-shadow: none;
-  }
-  .nav-menu ul {
-    display: flex;
-    gap: 1rem;
-  }
-  .nav-search-bar {
-    width: 14rem;
-  }
-}
-/* Container aligns hamburger, title, menu & search */
-.nav-container {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  position: relative;
-}
-
-/* Hamburger button on left */
-.nav-toggle {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-/* Dropdown menu (hidden by default) */
-.nav-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  z-index: 100;
-}
-.nav-menu.open {
-  max-height: 500px;
-}
-.nav-menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.nav-menu li a {
-  display: block;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  color: inherit;
-}
-.nav-menu li a:hover {
-  background: #f0f0f0;
-}
-
-/* Push search bar to the far right */
-.nav-search-bar {
-  margin-left: auto;
-  padding: 0.3rem 0.5rem;
-  font-size: 0.9rem;
-  width: 12rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .nav-search-bar:focus {
   border-color: #007bff;
   box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
 }
 
-/* Large screens: show menu inline, hide hamburger */
-@media (min-width: 768px) {
-  .nav-toggle { display: none; }
-  .nav-menu {
-    position: static;
-    display: block;
-    max-height: none;
-    border: none;
-    box-shadow: none;
-  }
-  .nav-menu ul {
-    display: flex;
-    gap: 1rem;
-  }
-  .nav-search-bar {
-    width: 14rem;
-  }
-}
-.nav-container {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  position: relative;
-}
-
-.nav-toggle {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.nav-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  z-index: 100;
-}
-
-.nav-menu.open {
-  max-height: 500px;
-}
-
-.nav-menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-menu li a {
-  display: block;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  color: inherit;
-}
-
-.nav-menu li a:hover {
-  background: #f0f0f0;
-}
-
-.nav-search-bar {
-  margin-left: auto;
-  padding: 0.3rem 0.5rem;
-  font-size: 0.9rem;
-  width: 12rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-  transition: border-color 0.2s ease;
-}
-
-.nav-search-bar:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
-}
-
-@media (min-width: 768px) {
-  .nav-toggle { display: none; }
-  .nav-menu {
-    position: static;
-    max-height: none;
-    border: none;
-    box-shadow: none;
-  }
-  .nav-menu ul {
-    display: flex;
-    gap: 1rem;
-  }
-  .nav-search-bar {
-    width: 14rem;
-  }
-}
-.nav-container {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  position: relative;
-}
-
-.nav-toggle {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.nav-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  z-index: 100;
-}
-
-.nav-menu.open {
-  max-height: 500px;
-}
-
-.nav-menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-menu li a {
-  display: block;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  color: inherit;
-}
-
-.nav-menu li a:hover {
-  background: #f0f0f0;
-}
-
-.nav-search-bar {
-  margin-left: auto;
-  padding: 0.3rem 0.5rem;
-  font-size: 0.9rem;
-  width: 12rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-  transition: border-color 0.2s ease;
-}
-
-.nav-search-bar:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
-}
-
-@media (min-width: 768px) {
-  .nav-toggle { display: none; }
-  .nav-menu {
-    position: static;
-    max-height: none;
-    border: none;
-    box-shadow: none;
-  }
-  .nav-menu ul {
-    display: flex;
-    gap: 1rem;
-  }
-  .nav-search-bar {
-    width: 14rem;
-  }
-}
-/* 1. Layout container */
-.nav-container {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  position: relative;
-}
-
-/* 2. Hamburger button on left */
-.nav-toggle {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-/* 3. Dropdown nav menu (hidden by default) */
+/* 4. Dropdown menu hidden by default */
 .nav-menu {
   position: absolute;
   top: 100%;
@@ -1272,23 +881,7 @@ window.addEventListener('scroll', () => {
   background: #f0f0f0;
 }
 
-/* 4. Push search bar far right */
-.nav-search-bar {
-  margin-left: auto;
-  padding: 0.3rem 0.5rem;
-  font-size: 0.9rem;
-  width: 12rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-  transition: border-color 0.2s ease;
-}
-.nav-search-bar:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
-}
-
-/* 5. Desktop: inline menu, hide hamburger */
+/* 5. Desktop: show menu inline, hide hamburger */
 @media (min-width: 768px) {
   .nav-toggle { display: none; }
   .nav-menu {
@@ -1306,103 +899,8 @@ window.addEventListener('scroll', () => {
     width: 14rem;
   }
 }
-/* 1. Base layout: center title, absolute children */
-.nav-container {
-  position: relative;
-  text-align: center;
-  padding: 0.5rem 1rem;
-}
 
-/* 2. Search bar pinned left */
-.nav-search-bar {
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 0.3rem 0.5rem;
-  font-size: 0.9rem;
-  width: 12rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-  transition: border-color 0.2s ease;
-}
-.nav-search-bar:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
-}
-
-/* 3. Title stays centered */
-.site-title {
-  margin: 0;
-  display: inline-block;
-}
-
-/* 4. Menu container pinned right */
-.menu-container {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-/* 5. Hamburger button */
-.nav-toggle {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-/* 6. Dropdown nav (hidden by default) */
-.nav-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  z-index: 100;
-}
-.nav-menu.open {
-  max-height: 500px; /* enough to show all links */
-}
-.nav-menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.nav-menu li a {
-  display: block;
-  padding: 0.5rem 1rem;
-  color: inherit;
-  text-decoration: none;
-}
-.nav-menu li a:hover {
-  background: #f0f0f0;
-}
-
-/* 7. Desktop: show links inline, hide hamburger */
-@media (min-width: 768px) {
-  .nav-toggle { display: none; }
-  .nav-menu {
-    position: static;
-    display: block;
-    max-height: none;
-    border: none;
-    box-shadow: none;
-  }
-  .nav-menu ul {
-    display: flex;
-    gap: 1rem;
-  }
-}
-/* ─── NAV LAYOUT ───────────────────────────────────────────────────── */
-.nav-container {
+/* ─── NAVIGATION (END REPLACEMENT) ─────────────────────────────────── */
   position: relative;
   text-align: center;
   padding: 0.5rem 1rem;
