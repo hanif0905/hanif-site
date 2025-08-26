@@ -45,17 +45,17 @@
 <body class="pathways">
   <header>
   <div class="nav-container">
-    <!-- 1. Hamburger toggle on the far left -->
+    <!-- 1. Hamburger on the far left -->
     <button id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">
       &#9776;
     </button>
 
-    <!-- 2. Site title centered -->
+    <!-- 2. Centered site title -->
     <h1 class="site-title">
       <a href="index.html">Hanif’s World</a>
     </h1>
 
-    <!-- 3. Search input pinned to the right -->
+    <!-- 3. Search bar pinned to the far right -->
     <input
       id="nav-search-input"
       class="nav-search-bar"
@@ -64,7 +64,7 @@
       aria-label="Search the site"
     />
 
-    <!-- 4. Dropdown menu (hidden until toggle) -->
+    <!-- 4. Dropdown nav links (hidden until toggle) -->
     <nav id="nav-menu" class="nav-menu">
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -110,21 +110,22 @@
   <footer>
     <p>© 2025 Hanif’s Corner</p>
   </footer>
-  <!-- Fuse.js from CDN for fuzzy searching -->
+    <!-- Fuse.js from CDN for fuzzy matching -->
   <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
 
   <script>
-    // 1. Hamburger open/close
+    // 1. Hamburger toggle
     document.getElementById('nav-toggle')
       .addEventListener('click', () => {
-        document.getElementById('nav-menu').classList.toggle('open');
+        document.getElementById('nav-menu')
+          .classList.toggle('open');
       });
 
-    // 2. Search-on-Enter redirect
+    // 2. Redirect on Enter in search bar
     (function() {
       const input = document.getElementById('nav-search-input');
       let dataPromise;
-      
+
       input.addEventListener('keydown', async e => {
         if (e.key !== 'Enter') return;
         e.preventDefault();
@@ -136,7 +137,7 @@
           fetch('/data/search.json').then(r => r.json());
         const data = await dataPromise;
 
-        // Fuse search
+        // Fuzzy-search with Fuse.js
         const results = new Fuse(data, {
           keys: ['title','description'],
           threshold: 0.3
