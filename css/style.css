@@ -1401,3 +1401,95 @@ window.addEventListener('scroll', () => {
     gap: 1rem;
   }
 }
+/* ─── NAV LAYOUT ───────────────────────────────────────────────────── */
+.nav-container {
+  position: relative;
+  text-align: center;
+  padding: 0.5rem 1rem;
+}
+
+/* 1. Hamburger on the far left */
+.nav-toggle {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* 2. Title stays centered */
+.site-title {
+  margin: 0;
+  display: inline-block;
+}
+
+/* 3. Search bar on the right */
+.nav-search-bar {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12rem;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.nav-search-bar:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+/* 4. Dropdown menu hidden by default */
+.nav-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+.nav-menu.open {
+  max-height: 500px; /* enough to show all links */
+}
+.nav-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-menu li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+.nav-menu li a:hover {
+  background: #f0f0f0;
+}
+
+/* 5. Desktop: inline menu, hide hamburger */
+@media (min-width: 768px) {
+  .nav-toggle { display: none; }
+  .nav-menu {
+    position: static;
+    display: block;
+    max-height: none;
+    border: none;
+    box-shadow: none;
+  }
+  .nav-menu ul {
+    display: flex;
+    gap: 1rem;
+  }
+  .nav-search-bar { width: 14rem; }
+}

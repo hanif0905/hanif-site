@@ -45,7 +45,17 @@
 <body class="pathways">
   <header>
   <div class="nav-container">
-    <!-- 1. Search bar on the left -->
+    <!-- 1. Hamburger toggle on the far left -->
+    <button id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">
+      &#9776;
+    </button>
+
+    <!-- 2. Site title centered -->
+    <h1 class="site-title">
+      <a href="index.html">Hanif’s World</a>
+    </h1>
+
+    <!-- 3. Search input pinned to the right -->
     <input
       id="nav-search-input"
       class="nav-search-bar"
@@ -54,32 +64,18 @@
       aria-label="Search the site"
     />
 
-    <!-- 2. Centered site title -->
-    <h1 class="site-title">
-      <a href="index.html">Hanif’s World</a>
-    </h1>
-
-    <!-- 3. Dropdown menu on the right -->
-    <div class="menu-container">
-      <button
-        id="nav-toggle"
-        class="nav-toggle"
-        aria-label="Toggle pages menu"
-      >
-        &#9776;
-      </button>
-      <nav id="nav-menu" class="nav-menu">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="quiet-bench.html">Quiet Bench</a></li>
-          <li><a href="study-table.html">Study Table</a></li>
-          <li><a href="little-studio.html">Little Studio</a></li>
-          <li><a href="pocket-quotes.html">Pocket Quotes</a></li>
-          <li><a href="pathways.html">Pathways</a></li>
-          <li><a href="about-hanif.html">About Hanif</a></li>
-        </ul>
-      </nav>
-    </div>
+    <!-- 4. Dropdown menu (hidden until toggle) -->
+    <nav id="nav-menu" class="nav-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quiet-bench.html">Quiet Bench</a></li>
+        <li><a href="study-table.html">Study Table</a></li>
+        <li><a href="little-studio.html">Little Studio</a></li>
+        <li><a href="pocket-quotes.html">Pocket Quotes</a></li>
+        <li><a href="pathways.html">Pathways</a></li>
+        <li><a href="about-hanif.html">About Hanif</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
   <main id="main-content">
@@ -114,29 +110,9 @@
   <footer>
     <p>© 2025 Hanif’s Corner</p>
   </footer>
-<!-- Font Awesome for hamburger icon -->
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
-  integrity="sha512-...replace-with-latest-hash..." crossorigin="anonymous" referrerpolicy="no-referrer">
-</script>
-
-<!-- Nav toggle and Search-on-Enter script -->
-<script>
-  // Hamburger toggle
-  document.getElementById('nav-toggle').addEventListener('click', () => {
-    document.getElementById('nav-menu').classList.toggle('open');
-  });
-
-  // Search on Enter
-  const navSearch = document.getElementById('nav-search-input');
-  navSearch.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && navSearch.value.trim()) {
-      const q = encodeURIComponent(navSearch.value.trim());
-      window.location.href = `search.html?q=${q}`;
-    }
-  });
-</script>
-  <!-- Fuse.js + toggle/search logic -->
+<!-- Fuse.js from CDN for fuzzy searching -->
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+
 <script>
   // Toggle the dropdown menu
   document.getElementById('nav-toggle')
@@ -144,24 +120,31 @@
       document.getElementById('nav-menu').classList.toggle('open');
     });
 
-  // Redirect on Enter
+  // Redirect on Enter in the search bar
   (function() {
     const input = document.getElementById('nav-search-input');
     let dataPromise;
+
     input.addEventListener('keydown', async e => {
       if (e.key !== 'Enter') return;
       e.preventDefault();
       const term = input.value.trim();
       if (!term) return;
-      dataPromise = dataPromise ||
-        fetch('/data/search.json').then(r => r.json());
+
+      // Load search data once
+      dataPromise = dataPromise || fetch('/data/search.json').then(r => r.json());
       const data = await dataPromise;
+
+      // Run Fuse.js
       const results = new Fuse(data, {
-        keys: ['title','description'],
+        keys: ['title', 'description'],
         threshold: 0.3
       }).search(term);
-      window.location.href =
-        results.length ? results[0].item.url : 'index.html';
+
+      // Go to the top match or home
+      window.location.href = results.length
+        ? results[0].item.url
+        : 'index.html';
     });
   })();
 </script>
