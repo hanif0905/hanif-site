@@ -5,6 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>About Hanif – Hanif’s World</title>
   <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* Ensure title is centered between left/right groups */
+    .header-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .left-group {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .right-group {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  </style>
 </head>
 <body class="about-hanif">
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -33,13 +54,13 @@
 </header>
 
 <main id="main-content">
-  <section class="intro fade-in" style="max-width:700px; margin: 0 auto;">
+  <section class="intro fade-in" style="max-width:700px; margin:0 auto;">
     <h2>Hi, I’m Hanif</h2>
     <p>Broadcast engineer turned web enthusiast. Welcome to my personal corner of the web — a place where I share my journey, values, creative work, and lessons learned along the way.</p>
   </section>
 
   <section class="skills fade-in" style="max-width:700px; margin:2rem auto;">
-    <h3>Skills & Tools</h3>
+    <h3>Skills &amp; Tools</h3>
     <p>HTML · CSS · JavaScript · Node.js · Figma · Broadcasting</p>
   </section>
 
@@ -54,11 +75,20 @@
 
   <section class="contact fade-in" style="max-width:700px; margin:2rem auto;">
     <h3>Get in Touch</h3>
-    <form>
+    <p>You can email me directly at <a href="mailto:hanifwangmayum786@gmail.com">hanifwangmayum786@gmail.com</a></p>
+    <form action="https://formspree.io/f/myzpreqq" method="POST">
       <label for="name">Name</label><br/>
-      <input type="text" id="name" name="name" style="width:100%; padding:0.5rem; margin-bottom:1rem;"><br/>
+      <input type="text" id="name" name="name" required
+             style="width:100%; padding:0.5rem; margin-bottom:1rem;"><br/>
+
+      <label for="email">Email</label><br/>
+      <input type="email" id="email" name="_replyto" required
+             style="width:100%; padding:0.5rem; margin-bottom:1rem;"><br/>
+
       <label for="message">Message</label><br/>
-      <textarea id="message" name="message" rows="5" style="width:100%; padding:0.5rem; margin-bottom:1rem;"></textarea><br/>
+      <textarea id="message" name="message" rows="5" required
+                style="width:100%; padding:0.5rem; margin-bottom:1rem;"></textarea><br/>
+
       <button type="submit" style="padding:0.5rem 1rem;">Send</button>
     </form>
   </section>
@@ -79,7 +109,9 @@
 const btn=document.getElementById('back-to-top');
 window.addEventListener('scroll',()=>{document.body.classList.toggle('scroll-down',window.scrollY>200);});
 btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-document.getElementById('menu-btn').addEventListener('click',()=>{document.getElementById('dropdown-menu').classList.toggle('open');});
+document.getElementById('menu-btn').addEventListener('click',()=>{
+  document.getElementById('dropdown-menu').classList.toggle('open');
+});
 </script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
 <script>
