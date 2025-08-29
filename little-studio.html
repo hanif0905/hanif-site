@@ -1,172 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="little-studio">
 <head>
   <meta charset="UTF-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <title>Little Studio – Hanif’s World</title>
-  <meta
-    name="description"
-    content="Little Studio: featured videos, doodles, and behind-the-scenes glimpses."
-  />
-
-  <meta property="og:type"        content="website"/>
-  <meta property="og:url"         content="https://your-domain.com/little-studio.html"/>
-  <meta property="og:title"       content="Little Studio – Hanif’s World"/>
-  <meta
-    property="og:description"
-    content="Little Studio: featured videos, doodles, and behind-the-scenes glimpses."
-  />
-  <meta
-    property="og:image"
-    content="https://your-domain.com/images/little-studio-1200.jpg"
-  />
-
-  <meta name="twitter:card"        content="summary_large_image"/>
-  <meta name="twitter:url"         content="https://your-domain.com/little-studio.html"/>
-  <meta name="twitter:title"       content="Little Studio – Hanif’s World"/>
-  <meta
-    name="twitter:description"
-    content="Little Studio: featured videos, doodles, and behind-the-scenes glimpses."
-  />
-  <meta
-    name="twitter:image"
-    content="https://your-domain.com/images/little-studio-1200.jpg"
-  />
-
-  <link rel="icon"       type="image/png" sizes="32x32" href="images/favicon-32x32.png"/>
-  <link rel="icon"       type="image/png" sizes="16x16" href="images/favicon-16x16.png"/>
-  <link rel="shortcut icon"           href="images/favicon.ico"/>
-  <link rel="manifest"                href="images/site.webmanifest"/>
-
-  <link rel="stylesheet" href="css/style.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Hanif’s World – Little Studio</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:sans-serif; }
+    header { background:#f5f5f5; position:relative; padding:1rem; }
+    .header-content {
+      display:flex; justify-content:center; align-items:center; position:relative;
+    }
+    #menu-btn {
+      position:absolute; left:1rem; top:50%; transform:translateY(-50%);
+      font-size:1.6rem; background:none; border:none; cursor:pointer;
+    }
+    #dropdown-menu {
+      display:none; position:absolute; top:calc(100% + .5rem); left:1rem;
+      background:#fff; border:1px solid #ccc; border-radius:4px;
+      box-shadow:0 2px 6px rgba(0,0,0,.1); list-style:none;
+      padding:.5rem 0; margin:0;
+    }
+    #dropdown-menu.open { display:block; }
+    #dropdown-menu li a {
+      display:block; padding:.5rem 1rem; text-decoration:none; color:#333;
+    }
+    #dropdown-menu li a:hover { background:#f0f0f0; }
+    .site-title { margin:0 2rem; font-size:1.8rem; }
+    .site-title a { text-decoration:none; color:#4B0082; }
+    #search-input {
+      position:absolute; right:1rem; top:50%; transform:translateY(-50%);
+      width:12rem; padding:.3rem .5rem; font-size:.9rem;
+      border:1px solid #ccc; border-radius:4px;
+    }
+    #search-input:focus {
+      border-color:#007bff; box-shadow:0 0 0 2px rgba(0,123,255,.25);
+    }
+    @media(min-width:768px) {
+      #menu-btn { display:none; }
+      #dropdown-menu {
+        display:flex!important; position:static; border:none;
+        box-shadow:none; gap:1rem;
+      }
+      #dropdown-menu li a { padding:0; }
+    }
+    main { padding:2rem; text-align:center; }
+    footer {
+      text-align:center;
+      padding:1rem;
+      background:#f5f5f5;
+      margin-top:2rem;
+      font-size:.9rem;
+    }
+  </style>
 </head>
-<body class="little-studio">
-<header>
-  <div class="header-content">
+<body>
 
-    <!-- 1. Hamburger button top-left -->
-    <button id="menu-btn" class="menu-btn" aria-label="Toggle menu">
-      ☰
-    </button>
+  <header>
+    <div class="header-content">
+      <button id="menu-btn" aria-label="Toggle menu">☰</button>
+      <ul id="dropdown-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quiet-bench.html">Quiet Bench</a></li>
+        <li><a href="study-table.html">Study Table</a></li>
+        <li><a href="little-studio.html">Little Studio</a></li>
+        <li><a href="pocket-quotes.html">Pocket Quotes</a></li>
+        <li><a href="pathways.html">Pathways</a></li>
+        <li><a href="about-hanif.html">About Hanif</a></li>
+      </ul>
 
-    <!-- 2. Centered title -->
-    <h1 class="site-title">
-      <a href="index.html">Hanif’s World</a>
-    </h1>
+      <h1 class="site-title"><a href="index.html">Hanif’s World</a></h1>
 
-    <!-- 3. Search box top-right -->
-    <input
-      id="search-input"
-      class="search-input"
-      type="search"
-      placeholder="Search…"
-      aria-label="Search the site"
-    />
+      <input
+        id="search-input"
+        type="search"
+        placeholder="Search…"
+        aria-label="Search the site"
+      />
+    </div>
+  </header>
 
-    <!-- 4. Dropdown menu (hidden until you click ☰) -->
-    <ul id="dropdown-menu" class="dropdown-menu">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="quiet-bench.html">Quiet Bench</a></li>
-      <li><a href="study-table.html">Study Table</a></li>
-      <li><a href="little-studio.html">Little Studio</a></li>
-      <li><a href="pocket-quotes.html">Pocket Quotes</a></li>
-      <li><a href="pathways.html">Pathways</a></li>
-      <li><a href="about-hanif.html">About Hanif</a></li>
-    </ul>
-
-  </div>
-</header>
-  <main id="main-content">
-<section class="videos layout layout--left align-top fade-in">
-      <div class="section-img">
-  <img
-  src="images/video-cover-300.jpg"
-  srcset="
-    images/video-cover-300.jpg 300w,
-    images/video-cover-600.jpg 600w
-  "
-  sizes="(max-width: 600px) 80vw, 250px"
-  alt="Featured Video Cover"
-  loading="lazy"
-  style="width:100%; max-width:250px; border-radius:8px;"
-/>
-</div>
-<div class="section-content">
-  <h2>Featured Videos</h2>
-  <div class="video-grid">
-<iframe
-  src="https://www.youtube.com/embed/…"
-  loading="lazy"
-  title="Video Title Here"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen>
-</iframe>
-</div>
-  </section>
-<section class="gallery layout layout--right align-top fade-in">
-      <div class="section-img">
-  <img src="images/doodle1.jpg" alt="Doodle 1" loading="lazy"/>
-<img src="images/doodle2.jpg" alt="Doodle 2" loading="lazy"/>
-<img src="images/doodle3.jpg" alt="Doodle 3" loading="lazy"/>
-</div>
-<div class="section-content">
-  <h2>Doodles Gallery</h2>
-  <div class="doodle-grid">…</div>
-</div>
-    </section>
-
-    <section class="behind-scenes">
-      <h2>Behind the Scenes</h2>
-      <div class="polaroid-strip">
-        <img src="images/bs1.jpg" class="polaroid" alt="Behind the Scenes 1">
-        <img src="images/bs2.jpg" class="polaroid" alt="Behind the Scenes 2">
-        <img src="images/bs3.jpg" class="polaroid" alt="Behind the Scenes 3">
-      </div>
-    </section>
+  <main>
+    <h2>Little Studio</h2>
+    <p>A place where creativity takes shape—videos, sketches, and more.</p>
+    <div style="max-width:600px; margin:1rem auto;">
+      <iframe width="100%" height="315"
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        title="YouTube video" frameborder="0" allowfullscreen>
+      </iframe>
+    </div>
   </main>
 
-  <footer>
-    <p>© 2025 Hanif’s Corner</p>
-  </footer>
- <!-- A. MENU‐TOGGLE: show/hide dropdown -->
-<script>
-  document.getElementById('menu-btn')
-    .addEventListener('click', () => {
-      document.getElementById('dropdown-menu')
-        .classList.toggle('open');
-    });
-</script>
+  <script>
+    document.getElementById('menu-btn')
+      .addEventListener('click', () => {
+        document.getElementById('dropdown-menu')
+          .classList.toggle('open');
+      });
+    document.getElementById('search-input')
+      .addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          alert('You searched for: ' + e.target.value);
+        }
+      });
+  </script>
 
-<!-- B. SEARCH‐ON‐ENTER: fuzzy search to pages -->
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
-<script>
-  (function() {
-    const input = document.getElementById('search-input');
-    let dataPromise;
-
-    input.addEventListener('keydown', async (e) => {
-      if (e.key !== 'Enter') return;
-      e.preventDefault();
-      const term = input.value.trim();
-      if (!term) return;
-
-      dataPromise = dataPromise ||
-        fetch('/data/search.json').then(r => r.json());
-      const data = await dataPromise;
-
-      const results = new Fuse(data, {
-        keys: ['title','description'],
-        threshold: 0.3
-      }).search(term);
-
-      window.location.href = results.length
-        ? results[0].item.url
-        : 'index.html';
-    });
-  })();
-</script>
+  <footer>© 2025 Hanif’s Corner</footer>
 </body>
 </html>
