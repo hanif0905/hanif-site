@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Font Awesome for search icons -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  integrity="sha512-pIVzV1z1k5FzXZQFq0o0xNXSGm+qshlB0oor5XjIEY6SlbM9axjKRjqTdDglChFlZ1e5KMmYh7gI2fLotY1Y7Q=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
 <head>
+  <!-- Font Awesome for search icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-pIVzV1z1k5FzXZQFq0o0xNXSGm+qshlB0oor5XjIEY6SlbM9axjKRjqTdDglChFlZ1e5KMmYh7gI2fLotY1Y7Q=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
   <!-- 1. Basic Meta Tags -->
-  <meta charset="UTF-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- 2. Page Title & Description -->
   <title>Welcome to Hanif’s World</title>
@@ -22,9 +23,9 @@
   />
 
   <!-- 3. Open Graph -->
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://your-domain.com/index.html"/>
-  <meta property="og:title" content="Welcome to Hanif’s World"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-domain.com/index.html" />
+  <meta property="og:title" content="Welcome to Hanif’s World" />
   <meta
     property="og:description"
     content="A place for thoughts, learning, faith, and little sparks of joy."
@@ -35,9 +36,9 @@
   />
 
   <!-- 4. Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:url" content="https://your-domain.com/index.html"/>
-  <meta name="twitter:title" content="Welcome to Hanif’s World"/>
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://your-domain.com/index.html" />
+  <meta name="twitter:title" content="Welcome to Hanif’s World" />
   <meta
     name="twitter:description"
     content="A place for thoughts, learning, faith, and little sparks of joy."
@@ -60,84 +61,17 @@
     sizes="16x16"
     href="images/favicon-16x16.png"
   />
-  <link rel="shortcut icon" href="images/favicon.ico"/>
-  <link rel="manifest" href="images/site.webmanifest"/>
+  <link rel="shortcut icon" href="images/favicon.ico" />
+  <link rel="manifest" href="images/site.webmanifest" />
 
   <!-- 6. Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css"/>
-
-  <!-- ─── Hamburger Dropdown CSS ────────────────────────── -->
-  <style>
-    /* positioning of your hamburger container */
-    .header-wrapper {
-      position: relative;
-    }
-    /* move ☰ into top-left */
-    .left-group {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-    }
-    #menu-btn {
-      font-size: 1.6rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-
-    /* hide your nav by default */
-    #dropdown-menu {
-      display: none;
-      position: absolute;
-      top: calc(100% + 0.5rem);
-      left: 1rem;
-      background: #fff;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      list-style: none;
-      padding: 0.5rem 0;
-      margin: 0;
-      z-index: 10;
-    }
-    /* show when .open is toggled */
-    #dropdown-menu.open {
-      display: block;
-    }
-    /* style the links */
-    #dropdown-menu li a {
-      display: block;
-      padding: 0.5rem 1rem;
-      text-decoration: none;
-      color: #333;
-    }
-    #dropdown-menu li a:hover {
-      background: #f0f0f0;
-    }
-
-    /* desktop: hide hamburger, show inline nav */
-    @media (min-width: 768px) {
-      #menu-btn {
-        display: none;
-      }
-      #dropdown-menu {
-        display: flex !important;
-        position: static;
-        background: none;
-        border: none;
-        box-shadow: none;
-        gap: 1rem;
-      }
-      #dropdown-menu li a {
-        padding: 0.5rem 0.75rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body class="index">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
+  <!-- HEADER -->
   <header>
     <div class="header-wrapper">
       <div class="left-group">
@@ -177,21 +111,107 @@
     </div>
   </header>
 
-  <!-- your existing page content -->
-  <section class="hero layout layout--left align-middle" id="main-content">
-    <!-- … -->
+  <!-- HERO -->
+  <section
+    class="hero layout layout--left align-middle"
+    id="main-content"
+  >
+    <div class="section-img">
+      <img
+        src="images/home-photo-300.jpg"
+        srcset="
+          images/home-photo-300.jpg   300w,
+          images/home-photo-600.jpg   600w,
+          images/home-photo-1200.jpg 1200w
+        "
+        sizes="(max-width: 600px) 80vw, 150px"
+        alt="Portrait of Hanif"
+        loading="lazy"
+        style="
+          width:100%;
+          max-width:150px;
+          border-radius:50%;
+          margin-bottom:1rem;
+        "
+      />
+    </div>
+    <div class="section-content">
+      <h1>Welcome to Hanif’s World</h1>
+      <p class="subline">
+        A place for thoughts, learning, faith, and little sparks of joy.
+      </p>
+      <blockquote class="hero-quote">
+        “Every sunrise is a fresh page in the story of our lives.”
+      </blockquote>
+    </div>
   </section>
 
-  <!-- Quick Peek Navigation -->
-  <!-- … -->
+  <!-- QUICK PEEK NAVIGATION -->
+  <section class="peek-nav fade-in">
+    <a href="quiet-bench.html" class="card">
+      <div class="icon">🌿</div>
+      <h3>Quiet Bench</h3>
+      <p>Reflections for the soul</p>
+    </a>
+    <a href="study-table.html" class="card">
+      <div class="icon">📚</div>
+      <h3>Study Table</h3>
+      <p>Notes and learnings</p>
+    </a>
+    <a href="little-studio.html" class="card">
+      <div class="icon">🎥</div>
+      <h3>Little Studio</h3>
+      <p>Visual stories</p>
+    </a>
+    <a href="pocket-quotes.html" class="card">
+      <div class="icon">✨</div>
+      <h3>Pocket Quotes</h3>
+      <p>Words to carry</p>
+    </a>
+    <a href="pathways.html" class="card">
+      <div class="icon">🛤️</div>
+      <h3>Pathways</h3>
+      <p>Journeys & detours</p>
+    </a>
+    <a href="about-hanif.html" class="card">
+      <div class="icon">🌸</div>
+      <h3>About Hanif</h3>
+      <p>Meet the mind</p>
+    </a>
+  </section>
 
-  <!-- Featured Section -->
-  <!-- … -->
+  <!-- FEATURED SECTION -->
+  <section class="featured fade-in">
+    <div class="featured-item video-feature">
+      <h2>Latest Video</h2>
+      <iframe
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        loading="lazy"
+        title="Latest video by Hanif"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <div class="featured-item quote-feature">
+      <h2>Latest Quote</h2>
+      <blockquote id="latest-quote">
+        “Life is a canvas—paint your path with purpose.”
+        <cite>— Hanif</cite>
+      </blockquote>
+    </div>
+  </section>
 
-  <!-- Hanif Today Box -->
-  <!-- … -->
+  <!-- HANIF TODAY BOX -->
+  <section class="today-box fade-in">
+    <h2>Hanif Today</h2>
+    <p>
+      I’m sipping mint tea and exploring CSS Grid animations today.
+      How are you filling your pages?
+    </p>
+  </section>
 
-  <!-- Soft Footer -->
+  <!-- SOFT FOOTER -->
   <footer class="soft-footer">
     <p>Built with love, learning, and late nights by Hanif.</p>
     <div class="social">
@@ -202,31 +222,48 @@
     <button id="back-to-top" title="Back to top">↑</button>
   </footer>
 
-  <!-- your © footer -->
+  <!-- COPYRIGHT FOOTER -->
   <footer>
     <p>© 2025 Hanif’s Corner</p>
   </footer>
 
-  <!-- ─── Hamburger Toggle + Search Script ───────────────── -->
+  <!-- BACK-TO-TOP SCRIPT -->
   <script>
-    // 1) Hamburger toggle
-    document
-      .getElementById("menu-btn")
-      .addEventListener("click", () => {
-        document
-          .getElementById("dropdown-menu")
-          .classList.toggle("open");
-      });
+    const btn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      btn.style.display = window.scrollY > 200 ? 'block' : 'none';
+    });
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
 
-    // 2) Search on Enter (replace alert with your Fuse.js code if desired)
+  <!-- MENU‐TOGGLE SCRIPT -->
+  <script>
     document
-      .getElementById("search-input")
-      .addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          alert("Searching for: " + e.target.value);
-        }
+      .getElementById('menu-btn')
+      .addEventListener('click', () => {
+        document
+          .getElementById('dropdown-menu')
+          .classList.toggle('open');
       });
+  </script>
+
+  <!-- SEARCH‐ON‐ENTER SCRIPT -->
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+  <script>
+    (function() {
+      const input = document.getElementById('search-input');
+      let dataPromise;
+      input.addEventListener('keydown', async (e) => {
+        if (e.key !== 'Enter') return;
+        e.preventDefault();
+        const term = input.value.trim();
+        if (!term) return;
+        dataPromise = dataPromise || fetch('/data/search.json').then(r => r.json());
+        const data = await dataPromise;
+        const results = new Fuse(data, { keys: ['title','description'], threshold: 0.3 }).search(term);
+        window.location.href = results.length ? results[0].item.url : 'index.html';
+      });
+    })();
   </script>
 </body>
 </html>
