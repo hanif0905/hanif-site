@@ -45,9 +45,9 @@
 <body class="little-studio">
 <header>
   <div class="header-wrapper">
-    <!-- 1. Top-left group: menu button + dropdown -->
+    <!-- 1. Top-left: menu button + hidden dropdown -->
     <div class="left-group">
-      <button id="menu-btn" class="menu-btn" aria-label="Open menu">≡</button>
+      <button id="menu-btn" class="menu-btn" aria-label="Toggle menu">☰</button>
       <nav id="dropdown-menu" class="dropdown-menu">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -68,14 +68,16 @@
 
     <!-- 3. Top-right: search box -->
     <div class="right-group">
-      <input id="search-input"
-             class="search-input"
-             type="search"
-             placeholder="Search…" />
+      <input
+        id="search-input"
+        class="search-input"
+        type="search"
+        placeholder="Search…"
+        aria-label="Search the site"
+      />
     </div>
   </div>
-</header>
-  <main id="main-content">
+</header>  <main id="main-content">
 <section class="videos layout layout--left align-top fade-in">
       <div class="section-img">
   <img
@@ -128,11 +130,8 @@
   <footer>
     <p>© 2025 Hanif’s Corner</p>
   </footer>
-     <!-- Fuse.js from CDN for fuzzy-search behavior -->
-  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
-
+       <!-- 1. MENU‐TOGGLE: show/hide the dropdown -->
   <script>
-    // 1. Toggle the dropdown menu on ☰ click
     document
       .getElementById('menu-btn')
       .addEventListener('click', () => {
@@ -140,8 +139,11 @@
           .getElementById('dropdown-menu')
           .classList.toggle('open');
       });
+  </script>
 
-    // 2. Redirect when the user presses Enter in the search box
+  <!-- 2. SEARCH‐ON‐ENTER: go to matching page -->
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+  <script>
     (function() {
       const input = document.getElementById('search-input');
       let dataPromise;
@@ -153,23 +155,21 @@
         const term = input.value.trim();
         if (!term) return;
 
-        // Fetch search.json only once
-        dataPromise = dataPromise || 
+        // load search data once
+        dataPromise = dataPromise ||
           fetch('/data/search.json').then(r => r.json());
         const data = await dataPromise;
 
-        // Perform fuzzy search
+        // fuzzy‐search
         const results = new Fuse(data, {
-          keys: ['title', 'description'],
+          keys: ['title','description'],
           threshold: 0.3
         }).search(term);
 
-        // Go to the top result or home
-        if (results.length) {
-          window.location.href = results[0].item.url;
-        } else {
-          window.location.href = 'index.html';
-        }
+        // redirect
+        window.location.href = results.length
+          ? results[0].item.url
+          : 'index.html';
       });
     })();
   </script>
