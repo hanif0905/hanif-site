@@ -103,46 +103,50 @@
   <footer>
     <p>© 2025 Hanif’s Corner</p>
   </footer>
-<!-- Fuse.js from CDN for search -->
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+  <!-- Fuse.js from CDN for fuzzy-search behavior -->
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
 
-<script>
-  // Toggle dropdown menu
-  document.getElementById('nav-toggle')
-    .addEventListener('click', () => {
-      document.getElementById('nav-menu')
-        .classList.toggle('open');
-    });
+  <script>
+    // 1. Toggle the dropdown menu on ☰ click
+    document
+      .getElementById('menu-btn')
+      .addEventListener('click', () => {
+        document
+          .getElementById('dropdown-menu')
+          .classList.toggle('open');
+      });
 
-  // Search on Enter
-  (function() {
-    const input = document.getElementById('nav-search-input');
-    let dataPromise;
+    // 2. Redirect when the user presses Enter in the search box
+    (function() {
+      const input = document.getElementById('search-input');
+      let dataPromise;
 
-    input.addEventListener('keydown', async e => {
-      if (e.key !== 'Enter') return;
-      e.preventDefault();
-      const term = input.value.trim();
-      if (!term) return;
+      input.addEventListener('keydown', async (e) => {
+        if (e.key !== 'Enter') return;
+        e.preventDefault();
 
-      // Load data once
-      dataPromise = dataPromise ||
-        fetch('/data/search.json').then(r => r.json());
-      const data = await dataPromise;
+        const term = input.value.trim();
+        if (!term) return;
 
-      // Fuzzy search
-      const results = new Fuse(data, {
-        keys: ['title','description'],
-        threshold: 0.3
-      }).search(term);
+        // Fetch search.json only once
+        dataPromise = dataPromise || 
+          fetch('/data/search.json').then(r => r.json());
+        const data = await dataPromise;
 
-      // Redirect
-      window.location.href = results.length
-        ? results[0].item.url
-        : 'index.html';
-    });
-  })();
-</script>
+        // Perform fuzzy search
+        const results = new Fuse(data, {
+          keys: ['title', 'description'],
+          threshold: 0.3
+        }).search(term);
+
+        // Go to the top result or home
+        if (results.length) {
+          window.location.href = results[0].item.url;
+        } else {
+          window.location.href = 'index.html';
+        }
+      });
+    })();
+  </script>
 </body>
-</html>
 </html>

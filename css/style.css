@@ -747,171 +747,87 @@ window.addEventListener('scroll', () => {
 .search-bar-container {
   margin-left: auto;
 }
+/* ── Header Layout ─────────────────────────────────────────── */
 
-/* The actual search input styling */
-/* NAV CONTAINER */
-/* ─── NAVIGATION (BEGIN REPLACEMENT) ───────────────────────────────── */
-
-.nav-container {
+.header-wrapper {
   position: relative;
-  text-align: center;
-  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
 }
 
-/* 1. Hamburger on far left */
-/* 2. Centered site title */
-.site-title {
-  margin: 0;
-  display: inline-block;
-}
-
-/* 3. Search bar on far right */
-/* 4. Dropdown menu hidden by default */
-
-/* 5. Desktop: show menu inline, hide hamburger */
-@media (min-width: 768px) { 
-/* ─── NAVIGATION (END REPLACEMENT) ─────────────────────────────────── */
-  position: relative;
-  text-align: center;
-  padding: 0.5rem 1rem;
-}
-
-/* 2. Title stays centered */
-.site-title {
-  margin: 0;
-  display: inline-block;
-}
-
-/* 3. Search bar on the right */
-
-/* 4. Dropdown menu hidden by default */
-/* ─── NAVIGATION LAYOUT ───────────────────────────────────────────────── */
-
-/* container: centers title, positions children absolutely */
-
-/* 1. Hamburger on far left */
-
-/* 2. Title stays perfectly centered */
-.site-title {
-  margin: 0;
-  display: inline-block;
-}
-
-/* 3. Search bar pinned right */
-/* 4. Dropdown menu (hidden by default) */
-  
-/* 5. On wider screens, show nav inline & hide hamburger */
-@media (min-width: 768px) {
-/* ─── END NAVIGATION LAYOUT ───────────────────────────────────────────────── */
-/* ─── NAVIGATION LAYOUT ───────────────────────────────────────────────── */
-
-/* Container centers the title; children use absolute positioning */
-
-/* 1. Hamburger toggle on far left */
-
-/* 2. Title stays perfectly centered */
-.site-title {
-  margin: 0;
-  display: inline-block;
-}
-
-/* 3. Search bar pinned to far right */
-/* 4. Dropdown menu (hidden by default) */
-
-/* Desktop: show nav inline, hide hamburger */
-@media (min-width: 768px) {
-/* ─── HAMBURGER TOGGLE (keep this single instance) ───────────────────────── */
-/* ─── NAVIGATION LAYOUT ─────────────────────────────────────────── */
-
-/* Container: centers title, positions hamburger & search */
-.nav-container {
-  position: relative;
-  text-align: center;
-  padding: 0.5rem 1rem;
-}
-
-/* Hamburger button (☰) on far left */
-.nav-toggle {
+/* Top-left: hamburger + dropdown */
+.left-group {
   position: absolute;
+  top: 1rem;
   left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
+}
+.menu-btn {
+  font-size: 1.4rem;
   background: none;
   border: none;
-  font-size: 1.5rem;
   cursor: pointer;
 }
-
-/* Title stays centered */
-.site-title {
-  margin: 0;
-  display: inline-block;
-}
-
-/* Search bar pinned to far right */
-.nav-search-bar {
+.dropdown-menu {
+  display: none;
   position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 14rem;
-  max-width: 40vw;
-  padding: 0.3rem 0.5rem;
-  font-size: 0.9rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-.nav-search-bar:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
-}
-
-/* Dropdown menu (hidden by default) */
-.nav-menu {
-  position: absolute;
-  top: 100%;
+  top: 2.4rem;
   left: 0;
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  z-index: 100;
 }
-.nav-menu.open {
-  max-height: 500px; /* big enough to show all links */
+.dropdown-menu.open {
+  display: block;
 }
-.nav-menu ul {
+.dropdown-menu ul {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0.2rem 0;
 }
-.nav-menu li a {
+.dropdown-menu li a {
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 1rem;
   text-decoration: none;
-  color: inherit;
+  color: #333;
 }
-.nav-menu li a:hover {
+.dropdown-menu li a:hover {
   background: #f0f0f0;
 }
 
-/* Desktop: show nav inline, hide hamburger */
+/* Center: title */
+.site-logo {
+  margin: 0;
+  font-size: 1.6rem;
+}
+.site-logo a {
+  text-decoration: none;
+  color: #4B0082;
+}
+
+/* Top-right: search */
+.right-group {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.search-input {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  width: 12rem;
+}
+
+/* On desktop, show menu inline and hide hamburger */
 @media (min-width: 768px) {
-  .nav-toggle { display: none; }
-  .nav-menu {
-    position: static;
+  .menu-btn { display: none; }
+  .dropdown-menu {
     display: block;
-    max-height: none;
+    position: static;
     border: none;
     box-shadow: none;
   }
-  .nav-menu ul {
-    display: flex;
-    gap: 1rem;
-  }
+  .dropdown-menu ul { display: flex; gap: 1rem; }
 }
