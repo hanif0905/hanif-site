@@ -1,166 +1,232 @@
 <!DOCTYPE html>
-<html lang="en" class="index">
+<html lang="en">
+<!-- Font Awesome for search icons -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  integrity="sha512-pIVzV1z1k5FzXZQFq0o0xNXSGm+qshlB0oor5XjIEY6SlbM9axjKRjqTdDglChFlZ1e5KMmYh7gI2fLotY1Y7Q=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hanif’s World – Home</title>
+  <!-- 1. Basic Meta Tags -->
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- 2. Page Title & Description -->
+  <title>Welcome to Hanif’s World</title>
+  <meta
+    name="description"
+    content="A place for thoughts, learning, faith, and little sparks of joy. Join Hanif’s journey at Quiet Bench, Study Table, and more."
+  />
+
+  <!-- 3. Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://your-domain.com/index.html"/>
+  <meta property="og:title" content="Welcome to Hanif’s World"/>
+  <meta
+    property="og:description"
+    content="A place for thoughts, learning, faith, and little sparks of joy."
+  />
+  <meta
+    property="og:image"
+    content="https://your-domain.com/images/home-photo-1200.jpg"
+  />
+
+  <!-- 4. Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:url" content="https://your-domain.com/index.html"/>
+  <meta name="twitter:title" content="Welcome to Hanif’s World"/>
+  <meta
+    name="twitter:description"
+    content="A place for thoughts, learning, faith, and little sparks of joy."
+  />
+  <meta
+    name="twitter:image"
+    content="https://your-domain.com/images/home-photo-1200.jpg"
+  />
+
+  <!-- 5. Favicons -->
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="images/favicon-32x32.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="images/favicon-16x16.png"
+  />
+  <link rel="shortcut icon" href="images/favicon.ico"/>
+  <link rel="manifest" href="images/site.webmanifest"/>
+
+  <!-- 6. Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css"/>
+
+  <!-- ─── Hamburger Dropdown CSS ────────────────────────── -->
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:sans-serif; }
-
-    header { background:#f5f5f5; position:relative; padding:1rem; }
-    .header-content {
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      position:relative;
+    /* positioning of your hamburger container */
+    .header-wrapper {
+      position: relative;
     }
-
-    /* ☰ menu top-left */
+    /* move ☰ into top-left */
+    .left-group {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+    }
     #menu-btn {
-      position:absolute;
-      left:1rem;
-      top:50%;
-      transform:translateY(-50%);
-      font-size:1.6rem;
-      background:none;
-      border:none;
-      cursor:pointer;
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      cursor: pointer;
     }
+
+    /* hide your nav by default */
     #dropdown-menu {
-      display:none;
-      position:absolute;
-      top:calc(100% + .5rem);
-      left:1rem;
-      background:#fff;
-      border:1px solid #ccc;
-      border-radius:4px;
-      box-shadow:0 2px 6px rgba(0,0,0,.1);
-      list-style:none;
-      padding:.5rem 0;
-      margin:0;
+      display: none;
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      left: 1rem;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      list-style: none;
+      padding: 0.5rem 0;
+      margin: 0;
+      z-index: 10;
     }
-    #dropdown-menu.open { display:block; }
+    /* show when .open is toggled */
+    #dropdown-menu.open {
+      display: block;
+    }
+    /* style the links */
     #dropdown-menu li a {
-      display:block;
-      padding:.5rem 1rem;
-      text-decoration:none;
-      color:#333;
+      display: block;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      color: #333;
     }
-    #dropdown-menu li a:hover { background:#f0f0f0; }
-
-    /* Title centered */
-    .site-title {
-      margin:0 2rem;
-      font-size:1.8rem;
-    }
-    .site-title a { text-decoration:none; color:#4B0082; }
-
-    /* Search top-right */
-    #search-input {
-      position:absolute;
-      right:1rem;
-      top:50%;
-      transform:translateY(-50%);
-      width:12rem;
-      padding:.3rem .5rem;
-      font-size:.9rem;
-      border:1px solid #ccc;
-      border-radius:4px;
-    }
-    #search-input:focus {
-      border-color:#007bff;
-      box-shadow:0 0 0 2px rgba(0,123,255,.25);
+    #dropdown-menu li a:hover {
+      background: #f0f0f0;
     }
 
-    /* Always show links inline on desktop */
-    @media(min-width:768px) {
-      #menu-btn { display:none; }
-      #dropdown-menu {
-        display:flex!important;
-        position:static;
-        border:none;
-        box-shadow:none;
-        gap:1rem;
+    /* desktop: hide hamburger, show inline nav */
+    @media (min-width: 768px) {
+      #menu-btn {
+        display: none;
       }
-      #dropdown-menu li a { padding:0; }
-    }
-
-    main { padding:2rem; text-align:center; }
-    footer {
-      text-align:center;
-      padding:1rem;
-      background:#f5f5f5;
-      margin-top:2rem;
-      font-size:.9rem;
+      #dropdown-menu {
+        display: flex !important;
+        position: static;
+        background: none;
+        border: none;
+        box-shadow: none;
+        gap: 1rem;
+      }
+      #dropdown-menu li a {
+        padding: 0.5rem 0.75rem;
+      }
     }
   </style>
 </head>
-<body>
+
+<body class="index">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <header>
-    <div class="header-content">
-      <button id="menu-btn" aria-label="Toggle menu">☰</button>
-      <ul id="dropdown-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="quiet-bench.html">Quiet Bench</a></li>
-        <li><a href="study-table.html">Study Table</a></li>
-        <li><a href="little-studio.html">Little Studio</a></li>
-        <li><a href="pocket-quotes.html">Pocket Quotes</a></li>
-        <li><a href="pathways.html">Pathways</a></li>
-        <li><a href="about-hanif.html">About Hanif</a></li>
-      </ul>
+    <div class="header-wrapper">
+      <div class="left-group">
+        <button
+          id="menu-btn"
+          class="menu-btn"
+          aria-label="Toggle menu"
+        >
+          ☰
+        </button>
+        <nav id="dropdown-menu" class="dropdown-menu">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="quiet-bench.html">Quiet Bench</a></li>
+            <li><a href="study-table.html">Study Table</a></li>
+            <li><a href="little-studio.html">Little Studio</a></li>
+            <li><a href="pocket-quotes.html">Pocket Quotes</a></li>
+            <li><a href="pathways.html">Pathways</a></li>
+            <li><a href="about-hanif.html">About Hanif</a></li>
+          </ul>
+        </nav>
+      </div>
 
-      <h1 class="site-title"><a href="index.html">Hanif’s World</a></h1>
+      <h1 class="site-logo">
+        <a href="index.html">Hanif’s World</a>
+      </h1>
 
-      <input
-        id="search-input"
-        type="search"
-        placeholder="Search…"
-        aria-label="Search the site"
-      />
+      <div class="right-group">
+        <input
+          id="search-input"
+          class="search-input"
+          type="search"
+          placeholder="Search…"
+          aria-label="Search the site"
+        />
+      </div>
     </div>
   </header>
 
-  <main>
-    <h2>Welcome to Hanif’s World</h2>
-    <p>This is your homepage content. Replace with your real welcome message, photos, or featured section.</p>
-  </main>
+  <!-- your existing page content -->
+  <section class="hero layout layout--left align-middle" id="main-content">
+    <!-- … -->
+  </section>
 
+  <!-- Quick Peek Navigation -->
+  <!-- … -->
+
+  <!-- Featured Section -->
+  <!-- … -->
+
+  <!-- Hanif Today Box -->
+  <!-- … -->
+
+  <!-- Soft Footer -->
+  <footer class="soft-footer">
+    <p>Built with love, learning, and late nights by Hanif.</p>
+    <div class="social">
+      <a href="#"><img src="images/icon-youtube.svg" alt="YouTube" /></a>
+      <a href="#"><img src="images/icon-linkedin.svg" alt="LinkedIn" /></a>
+      <a href="#"><img src="images/icon-github.svg" alt="GitHub" /></a>
+    </div>
+    <button id="back-to-top" title="Back to top">↑</button>
+  </footer>
+
+  <!-- your © footer -->
+  <footer>
+    <p>© 2025 Hanif’s Corner</p>
+  </footer>
+
+  <!-- ─── Hamburger Toggle + Search Script ───────────────── -->
   <script>
-    // Toggle dropdown
-    document.getElementById('menu-btn')
-      .addEventListener('click', () => {
-        document.getElementById('dropdown-menu')
-          .classList.toggle('open');
+    // 1) Hamburger toggle
+    document
+      .getElementById("menu-btn")
+      .addEventListener("click", () => {
+        document
+          .getElementById("dropdown-menu")
+          .classList.toggle("open");
       });
-    // Search-on-Enter
-    document.getElementById('search-input')
-      .addEventListener('keydown', e => {
-        if (e.key === 'Enter') {
+
+    // 2) Search on Enter (replace alert with your Fuse.js code if desired)
+    document
+      .getElementById("search-input")
+      .addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
           e.preventDefault();
-          alert('You searched for: ' + e.target.value);
+          alert("Searching for: " + e.target.value);
         }
       });
   </script>
-
-  <footer>© 2025 Hanif’s Corner</footer>
-<script>
-  // 1) Toggle the dropdown
-  document.getElementById('menu-btn')
-    .addEventListener('click', () => {
-      document.getElementById('dropdown-menu')
-        .classList.toggle('open');
-    });
-
-  // 2) Search-on-Enter (alerts for now)
-  document.getElementById('search-input')
-    .addEventListener('keydown', e => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        alert('Searching for: ' + e.target.value);
-      }
-    });
-</script>
 </body>
 </html>
