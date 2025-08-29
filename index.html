@@ -59,7 +59,8 @@
   <a href="#main-content" class="skip-link">Skip to main content</a>
 <header>
   <div class="header-wrapper">
-    <!-- 1. Top-left: menu button + hidden dropdown -->
+
+    <!-- A. Top-left: hamburger + hidden dropdown -->
     <div class="left-group">
       <button id="menu-btn" class="menu-btn" aria-label="Toggle menu">☰</button>
       <nav id="dropdown-menu" class="dropdown-menu">
@@ -75,12 +76,12 @@
       </nav>
     </div>
 
-    <!-- 2. Center: your site title -->
+    <!-- B. Center: site title -->
     <h1 class="site-logo">
       <a href="index.html">Hanif’s World</a>
     </h1>
 
-    <!-- 3. Top-right: search box -->
+    <!-- C. Top-right: search box -->
     <div class="right-group">
       <input
         id="search-input"
@@ -90,9 +91,9 @@
         aria-label="Search the site"
       />
     </div>
+
   </div>
-</header>
-<section class="hero layout layout--left align-middle">
+</header><section class="hero layout layout--left align-middle">
   <div class="section-img">
    <img
   src="images/home-photo-300.jpg"
@@ -197,7 +198,7 @@
   </footer>
 
   <!-- Back-to-Top Script -->
-         <!-- 1. MENU‐TOGGLE: show/hide the dropdown -->
+  <!-- A. MENU‐TOGGLE: show/hide dropdown -->
   <script>
     document
       .getElementById('menu-btn')
@@ -208,7 +209,7 @@
       });
   </script>
 
-  <!-- 2. SEARCH‐ON‐ENTER: go to matching page -->
+  <!-- B. SEARCH‐ON‐ENTER: go to matching page -->
   <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
   <script>
     (function() {
@@ -222,18 +223,15 @@
         const term = input.value.trim();
         if (!term) return;
 
-        // load search data once
         dataPromise = dataPromise ||
           fetch('/data/search.json').then(r => r.json());
         const data = await dataPromise;
 
-        // fuzzy‐search
         const results = new Fuse(data, {
           keys: ['title','description'],
           threshold: 0.3
         }).search(term);
 
-        // redirect
         window.location.href = results.length
           ? results[0].item.url
           : 'index.html';
