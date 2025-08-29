@@ -51,17 +51,26 @@
 <body class="quiet-bench">
  <header>
   <div class="nav-container">
-    <!-- 1. Hamburger toggle -->
+    <!-- Hamburger button on left -->
     <button id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">
       &#9776;
     </button>
 
-    <!-- 2. Site title -->
+    <!-- Centered site title -->
     <h1 class="site-title">
       <a href="index.html">Hanif’s World</a>
     </h1>
 
-    <!-- 3. Dropdown nav menu -->
+    <!-- Search bar on right -->
+    <input
+      id="nav-search-input"
+      class="nav-search-bar"
+      type="search"
+      placeholder="Search…"
+      aria-label="Search the site"
+    />
+
+    <!-- Dropdown menu (hidden by default) -->
     <nav id="nav-menu" class="nav-menu">
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -73,15 +82,6 @@
         <li><a href="about-hanif.html">About Hanif</a></li>
       </ul>
     </nav>
-
-    <!-- 4. Inline search bar -->
-    <input
-      id="nav-search-input"
-      class="nav-search-bar"
-      type="search"
-      placeholder="Search…"
-      aria-label="Search the site"
-    />
   </div>
 </header>
   <main id="main-content">
@@ -107,69 +107,45 @@
   <footer>
     <p>© 2025 Hanif’s Corner</p>
   </footer>
-<!-- Font Awesome for hamburger icon -->
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
-  integrity="sha512-...replace-with-latest-hash..." crossorigin="anonymous" referrerpolicy="no-referrer">
-</script>
+<!-- Fuse.js from CDN for search -->
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
 
-<!-- Nav toggle and Search-on-Enter script -->
 <script>
-  // Hamburger toggle
-  document.getElementById('nav-toggle').addEventListener('click', () => {
-    document.getElementById('nav-menu').classList.toggle('open');
-  });
+  // Toggle dropdown menu
+  document.getElementById('nav-toggle')
+    .addEventListener('click', () => {
+      document.getElementById('nav-menu')
+        .classList.toggle('open');
+    });
 
   // Search on Enter
-  const navSearch = document.getElementById('nav-search-input');
-  navSearch.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && navSearch.value.trim()) {
-      const q = encodeURIComponent(navSearch.value.trim());
-      window.location.href = `search.html?q=${q}`;
-    }
-  });
+  (function() {
+    const input = document.getElementById('nav-search-input');
+    let dataPromise;
+
+    input.addEventListener('keydown', async e => {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      const term = input.value.trim();
+      if (!term) return;
+
+      // Load data once
+      dataPromise = dataPromise ||
+        fetch('/data/search.json').then(r => r.json());
+      const data = await dataPromise;
+
+      // Fuzzy search
+      const results = new Fuse(data, {
+        keys: ['title','description'],
+        threshold: 0.3
+      }).search(term);
+
+      // Redirect
+      window.location.href = results.length
+        ? results[0].item.url
+        : 'index.html';
+    });
+  })();
 </script>
-  <!-- Fuse.js from CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
-
-  <script>
-    // 1. Toggle the dropdown menu
-    document.getElementById('nav-toggle')
-      .addEventListener('click', () => {
-        document.getElementById('nav-menu')
-          .classList.toggle('open');
-      });
-
-    // 2. Direct search-on-Enter
-    ;(function() {
-      const input = document.getElementById('nav-search-input');
-      let dataPromise;
-
-      input.addEventListener('keydown', async e => {
-        if (e.key !== 'Enter') return;
-        e.preventDefault();
-        
-        const term = input.value.trim();
-        if (!term) return;
-
-        // Load search data once
-        dataPromise = dataPromise ||
-          fetch('/data/search.json').then(r => r.json());
-        const data = await dataPromise;
-
-        // Fuzzy-search with Fuse.js
-        const results = new Fuse(data, {
-          keys: ['title', 'description'],
-          threshold: 0.3
-        }).search(term);
-
-        // Redirect to top hit, or home
-        if (results.length) {
-          window.location.href = results[0].item.url;
-        } else {
-          window.location.href = 'index.html';
-        }
-      });
-    })();
-  </script>
 </body>
 </html>

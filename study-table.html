@@ -45,17 +45,17 @@
 <body class="study-table">
   <header>
   <div class="nav-container">
-    <!-- 1. Hamburger on the far left -->
+    <!-- Hamburger button on left -->
     <button id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">
       &#9776;
     </button>
 
-    <!-- 2. Centered site title -->
+    <!-- Centered site title -->
     <h1 class="site-title">
       <a href="index.html">Hanif’s World</a>
     </h1>
 
-    <!-- 3. Search bar pinned to the far right -->
+    <!-- Search bar on right -->
     <input
       id="nav-search-input"
       class="nav-search-bar"
@@ -64,7 +64,7 @@
       aria-label="Search the site"
     />
 
-    <!-- 4. Dropdown nav links (hidden until toggle) -->
+    <!-- Dropdown menu (hidden by default) -->
     <nav id="nav-menu" class="nav-menu">
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -110,45 +110,45 @@
   <footer>
     <p>© 2025 Hanif’s Corner</p>
   </footer>
-    <!-- Fuse.js from CDN for fuzzy matching -->
-  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+    <!-- Fuse.js from CDN for search -->
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
 
-  <script>
-    // 1. Hamburger toggle
-    document.getElementById('nav-toggle')
-      .addEventListener('click', () => {
-        document.getElementById('nav-menu')
-          .classList.toggle('open');
-      });
+<script>
+  // Toggle dropdown menu
+  document.getElementById('nav-toggle')
+    .addEventListener('click', () => {
+      document.getElementById('nav-menu')
+        .classList.toggle('open');
+    });
 
-    // 2. Redirect on Enter in search bar
-    (function() {
-      const input = document.getElementById('nav-search-input');
-      let dataPromise;
+  // Search on Enter
+  (function() {
+    const input = document.getElementById('nav-search-input');
+    let dataPromise;
 
-      input.addEventListener('keydown', async e => {
-        if (e.key !== 'Enter') return;
-        e.preventDefault();
-        const term = input.value.trim();
-        if (!term) return;
+    input.addEventListener('keydown', async e => {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      const term = input.value.trim();
+      if (!term) return;
 
-        // Load search data only once
-        dataPromise = dataPromise ||
-          fetch('/data/search.json').then(r => r.json());
-        const data = await dataPromise;
+      // Load data once
+      dataPromise = dataPromise ||
+        fetch('/data/search.json').then(r => r.json());
+      const data = await dataPromise;
 
-        // Fuzzy-search with Fuse.js
-        const results = new Fuse(data, {
-          keys: ['title','description'],
-          threshold: 0.3
-        }).search(term);
+      // Fuzzy search
+      const results = new Fuse(data, {
+        keys: ['title','description'],
+        threshold: 0.3
+      }).search(term);
 
-        // Go to top match or home
-        window.location.href = results.length
-          ? results[0].item.url
-          : 'index.html';
-      });
-    })();
-  </script>
+      // Redirect
+      window.location.href = results.length
+        ? results[0].item.url
+        : 'index.html';
+    });
+  })();
+</script>
 </body>
 </html>
