@@ -3,126 +3,79 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Hanif’s World – Study Table</title>
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:sans-serif; }
-    header { background:#f5f5f5; position:relative; padding:1rem; }
-    .header-content {
-      display:flex; justify-content:center; align-items:center; position:relative;
-    }
-    #menu-btn {
-      position:absolute; left:1rem; top:50%; transform:translateY(-50%);
-      font-size:1.6rem; background:none; border:none; cursor:pointer;
-    }
-    #dropdown-menu {
-      display:none; position:absolute; top:calc(100% + .5rem); left:1rem;
-      background:#fff; border:1px solid #ccc; border-radius:4px;
-      box-shadow:0 2px 6px rgba(0,0,0,.1); list-style:none;
-      padding:.5rem 0; margin:0;
-    }
-    #dropdown-menu.open { display:block; }
-    #dropdown-menu li a {
-      display:block; padding:.5rem 1rem; text-decoration:none; color:#333;
-    }
-    #dropdown-menu li a:hover { background:#f0f0f0; }
-    .site-title { margin:0 2rem; font-size:1.8rem; }
-    .site-title a { text-decoration:none; color:#4B0082; }
-    #search-input {
-      position:absolute; right:1rem; top:50%; transform:translateY(-50%);
-      width:12rem; padding:.3rem .5rem; font-size:.9rem;
-      border:1px solid #ccc; border-radius:4px;
-    }
-    #search-input:focus {
-      border-color:#007bff; box-shadow:0 0 0 2px rgba(0,123,255,.25);
-    }
-    @media(min-width:768px) {
-      #menu-btn { display:none; }
-      #dropdown-menu {
-        display:flex!important; position:static; border:none;
-        box-shadow:none; gap:1rem;
-      }
-      #dropdown-menu li a { padding:0; }
-    }
-    main { padding:2rem; text-align:center; }
-    footer {
-      text-align:center;
-      padding:1rem;
-      background:#f5f5f5;
-      margin-top:2rem;
-      font-size:.9rem;
-    }
-  </style>
+  <title>Study Table – Hanif’s World</title>
+  <link rel="stylesheet" href="css/style.css"/>
 </head>
-<body>
+<body class="study-table">
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header>
-    <div class="header-content">
-      <button id="menu-btn" aria-label="Toggle menu">☰</button>
-      <ul id="dropdown-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="quiet-bench.html">Quiet Bench</a></li>
-        <li><a href="study-table.html">Study Table</a></li>
-        <li><a href="little-studio.html">Little Studio</a></li>
-        <li><a href="pocket-quotes.html">Pocket Quotes</a></li>
-        <li><a href="pathways.html">Pathways</a></li>
-        <li><a href="about-hanif.html">About Hanif</a></li>
-      </ul>
-
-      <h1 class="site-title"><a href="index.html">Hanif’s World</a></h1>
-
-      <input
-        id="search-input"
-        type="search"
-        placeholder="Search…"
-        aria-label="Search the site"
-      />
+<header>
+  <div class="header-wrapper">
+    <div class="left-group">
+      <button id="menu-btn" class="menu-btn" aria-label="Toggle menu">☰</button>
+      <nav id="dropdown-menu" class="dropdown-menu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="quiet-bench.html">Quiet Bench</a></li>
+          <li><a href="study-table.html">Study Table</a></li>
+          <li><a href="little-studio.html">Little Studio</a></li>
+          <li><a href="pocket-quotes.html">Pocket Quotes</a></li>
+          <li><a href="pathways.html">Pathways</a></li>
+          <li><a href="about-hanif.html">About Hanif</a></li>
+        </ul>
+      </nav>
     </div>
-  </header>
+    <h1 class="site-logo"><a href="index.html">Hanif’s World</a></h1>
+    <div class="right-group">
+      <input id="search-input" class="search-input" type="search" placeholder="Search…" />
+    </div>
+  </div>
+</header>
 
-  <main>
-    <h2>Study Table</h2>
+<main id="main-content">
+  <section class="golden-tip fade-in">
     <p>Golden Tip: Learning happens when practice meets reflection.</p>
+  </section>
+  <section class="resources fade-in">
     <h3>Resources</h3>
     <ul style="list-style:disc inside; max-width:600px; margin:1rem auto; text-align:left;">
       <li>Free online tutorials</li>
       <li>Practice problems</li>
       <li>Community study groups</li>
     </ul>
-  </main>
+  </section>
+</main>
 
-  <script>
-    document.getElementById('menu-btn')
-      .addEventListener('click', () => {
-        document.getElementById('dropdown-menu')
-          .classList.toggle('open');
-      });
-    document.getElementById('search-input')
-      .addEventListener('keydown', e => {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          alert('You searched for: ' + e.target.value);
-        }
-      });
-  </script>
+<footer class="soft-footer">
+  <p>Built with love, learning, and late nights by Hanif.</p>
+  <div class="social">
+    <a href="#"><img src="images/icon-youtube.svg" alt="YouTube"/></a>
+    <a href="#"><img src="images/icon-linkedin.svg" alt="LinkedIn"/></a>
+    <a href="#"><img src="images/icon-github.svg" alt="GitHub"/></a>
+  </div>
+  <button id="back-to-top">↑</button>
+</footer>
+<footer>© 2025 Hanif’s Corner</footer>
 
-  <footer>© 2025 Hanif’s Corner</footer>
 <script>
-  // 1) Toggle the dropdown
-  document.getElementById('menu-btn')
-    .addEventListener('click', () => {
-      document.getElementById('dropdown-menu')
-        .classList.toggle('open');
-    });
-
-  // 2) Search-on-Enter (alerts for now)
-  document.getElementById('search-input')
-    .addEventListener('keydown', e => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        alert('Searching for: ' + e.target.value);
-      }
-    });
+const btn=document.getElementById('back-to-top');
+window.addEventListener('scroll',()=>{document.body.classList.toggle('scroll-down',window.scrollY>200);});
+btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+document.getElementById('menu-btn').addEventListener('click',()=>{document.getElementById('dropdown-menu').classList.toggle('open');});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+<script>
+(function(){
+const input=document.getElementById('search-input');let dataPromise;
+input.addEventListener('keydown',async e=>{
+ if(e.key!=='Enter')return;e.preventDefault();
+ const term=input.value.trim();if(!term)return;
+ dataPromise=dataPromise||fetch('/data/search.json').then(r=>r.json());
+ const data=await dataPromise;
+ const results=new Fuse(data,{keys:['title','description'],threshold:0.3}).search(term);
+ window.location.href=results.length?results[0].item.url:'index.html';
+});
+})();
 </script>
 </body>
 </html>
