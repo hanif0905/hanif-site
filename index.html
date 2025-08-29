@@ -145,5 +145,22 @@
   </script>
 
   <footer>© 2025 Hanif’s Corner</footer>
+<script>
+  // 1) Toggle the dropdown
+  document.getElementById('menu-btn')
+    .addEventListener('click', () => {
+      document.getElementById('dropdown-menu')
+        .classList.toggle('open');
+    });
+
+  // 2) Search-on-Enter (alerts for now)
+  document.getElementById('search-input')
+    .addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        alert('Searching for: ' + e.target.value);
+      }
+    });
+</script>
 </body>
 </html>
