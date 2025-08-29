@@ -50,42 +50,33 @@
 </head>
 <body class="quiet-bench">
  <header>
-  <div class="header-wrapper">
+    <div class="header-content">
 
-    <!-- A. Top-left: hamburger + hidden dropdown -->
-    <div class="left-group">
-      <button id="menu-btn" class="menu-btn" aria-label="Toggle menu">☰</button>
-      <nav id="dropdown-menu" class="dropdown-menu">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="quiet-bench.html">Quiet Bench</a></li>
-          <li><a href="study-table.html">Study Table</a></li>
-          <li><a href="little-studio.html">Little Studio</a></li>
-          <li><a href="pocket-quotes.html">Pocket Quotes</a></li>
-          <li><a href="pathways.html">Pathways</a></li>
-          <li><a href="about-hanif.html">About Hanif</a></li>
-        </ul>
-      </nav>
-    </div>
+      <!-- 1. Hamburger -->
+      <button id="menu-btn" aria-label="Toggle menu">☰</button>
+      <ul id="dropdown-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quiet-bench.html">Quiet Bench</a></li>
+        <li><a href="study-table.html">Study Table</a></li>
+        <li><a href="little-studio.html">Little Studio</a></li>
+        <li><a href="pocket-quotes.html">Pocket Quotes</a></li>
+        <li><a href="pathways.html">Pathways</a></li>
+        <li><a href="about-hanif.html">About Hanif</a></li>
+      </ul>
 
-    <!-- B. Center: site title -->
-    <h1 class="site-logo">
-      <a href="index.html">Hanif’s World</a>
-    </h1>
+      <!-- 2. Centered title -->
+      <h1 class="site-title"><a href="index.html">Hanif’s World</a></h1>
 
-    <!-- C. Top-right: search box -->
-    <div class="right-group">
+      <!-- 3. Search box -->
       <input
         id="search-input"
-        class="search-input"
         type="search"
         placeholder="Search…"
         aria-label="Search the site"
       />
-    </div>
 
-  </div>
-</header>
+    </div>
+  </header>
   <main id="main-content">
     <section class="welcome layout layout--center align-top fade-in">
       <div class="section-img">
@@ -111,43 +102,21 @@
   </footer>
       <!-- A. MENU‐TOGGLE: show/hide dropdown -->
   <script>
-    document
-      .getElementById('menu-btn')
+    // Toggle dropdown
+    document.getElementById('menu-btn')
       .addEventListener('click', () => {
-        document
-          .getElementById('dropdown-menu')
+        document.getElementById('dropdown-menu')
           .classList.toggle('open');
       });
-  </script>
 
-  <!-- B. SEARCH‐ON‐ENTER: go to matching page -->
-  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
-  <script>
-    (function() {
-      const input = document.getElementById('search-input');
-      let dataPromise;
-
-      input.addEventListener('keydown', async (e) => {
-        if (e.key !== 'Enter') return;
-        e.preventDefault();
-
-        const term = input.value.trim();
-        if (!term) return;
-
-        dataPromise = dataPromise ||
-          fetch('/data/search.json').then(r => r.json());
-        const data = await dataPromise;
-
-        const results = new Fuse(data, {
-          keys: ['title','description'],
-          threshold: 0.3
-        }).search(term);
-
-        window.location.href = results.length
-          ? results[0].item.url
-          : 'index.html';
+    // Search-on-Enter (alerts your term)
+    document.getElementById('search-input')
+      .addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          alert('You searched for: ' + e.target.value);
+        }
       });
-    })();
   </script>
 </body>
 </html>
