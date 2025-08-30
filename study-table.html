@@ -11,31 +11,33 @@
 
 <header>
   <div class="header-wrapper">
-    <div class="left-group">
-      <button id="menu-btn" class="menu-btn">☰</button>
+    <!-- Top Row -->
+    <div class="top-row">
+      <h1 class="site-logo"><a href="index.html">Hanif’s World</a></h1>
+      <div class="right-group">
+        <input id="search-input" class="search-input" type="search" placeholder="Search…" aria-label="Search"/>
+      </div>
     </div>
-    <h1 class="site-logo"><a href="index.html">Hanif’s World</a></h1>
-    <nav id="dropdown-menu">
+    <!-- Bottom Row -->
+    <nav id="dropdown-menu" class="dropdown-menu">
       <ul>
-        <li><a href="quiet-bench.html">Quiet Bench</a></li>
-        <li><a href="study-table.html">Study Table</a></li>
-        <li><a href="little-studio.html">Little Studio</a></li>
-        <li><a href="pocket-quotes.html">Pocket Quotes</a></li>
-        <li><a href="pathways.html">Pathways</a></li>
-        <li><a href="about-hanif.html">About Hanif</a></li>
+        <li><a href="index.html">🏡 Home</a></li>
+        <li><a href="quiet-bench.html">🌿 Quiet Bench</a></li>
+        <li><a href="study-table.html">📚 Study Table</a></li>
+        <li><a href="little-studio.html">🎥 Little Studio</a></li>
+        <li><a href="pocket-quotes.html">✨ Pocket Quotes</a></li>
+        <li><a href="pathways.html">🛤️ Pathways</a></li>
+        <li><a href="about-hanif.html">🌸 About Hanif</a></li>
       </ul>
     </nav>
-    <div class="right-group">
-      <input id="search-input" class="search-input" type="search" placeholder="Search…"/>
-    </div>
   </div>
 </header>
-
 <main id="main-content">
   <section style="padding:2rem 1rem;">
     <h1>What I’m Learning Now</h1>
     <div style="background:var(--mint);padding:1rem;border-radius:var(--radius);margin:1rem auto;max-width:500px;">
-      <strong>Golden Tip of the Week:</strong> Learning happens when practice meets reflection.
+      <strong>Golden Tip of the Week:</strong>
+      <blockquote id="daily-quote" style="margin-top:0.5rem;"></blockquote>
     </div>
     <ul style="text-align:left;max-width:500px;margin:1rem auto;">
       <li>Free, structured tutorials</li>
@@ -53,8 +55,56 @@
   </section>
 </main>
 
-<footer class="soft-footer">…</footer>
+<footer class="soft-footer">
+  <p>Built with love, learning, and late nights by Hanif.</p>
+  <div class="social">
+    <a href="#"><img src="images/icon-youtube.svg" alt="YouTube"/></a>
+    <a href="#"><img src="images/icon-linkedin.svg" alt="LinkedIn"/></a>
+    <a href="#"><img src="images/icon-github.svg" alt="GitHub"/></a>
+  </div>
+  <button id="back-to-top">↑</button>
+</footer>
 <footer class="page-copy">© 2025 Hanif’s Corner</footer>
-<script>…</script>
+
+<script>
+  document.getElementById('menu-btn').onclick=()=>document.getElementById('dropdown-menu').classList.toggle('open');
+  const btt=document.getElementById('back-to-top');
+  window.addEventListener('scroll',()=>document.body.classList.toggle('scrolled',window.scrollY>100));
+  btt.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+  const routes=[
+    {k:['quiet','bench'],url:'quiet-bench.html'},
+    {k:['study','table'],url:'study-table.html'},
+    {k:['studio','video'],url:'little-studio.html'},
+    {k:['quote','quotes'],url:'pocket-quotes.html'},
+    {k:['path','pathways'],url:'pathways.html'},
+    {k:['about','hanif'],url:'about-hanif.html'}
+  ];
+  const s=document.getElementById('search-input');
+  s.addEventListener('keydown',e=>{
+    if(e.key!=='Enter')return;
+    e.preventDefault();
+    const t=s.value.trim().toLowerCase();
+    if(!t)return;
+    const hit=routes.find(r=>r.k.some(w=>t.includes(w)));
+    window.location.href=hit?hit.url:'index.html';
+  });
+  const quotes=[
+    "Every small kindness plants a forest in someone’s heart.",
+    "The quietest moments often speak the loudest truths.",
+    "Dreams are plans in pajamas — wake them gently.",
+    "Your path is yours alone; even the shadows keep your pace.",
+    "Smiles are the currency of days well spent.",
+    "Today is a soft page — write with steady hands.",
+    "Courage doesn’t shout; it knocks and waits to be let in.",
+    "Little habits are the architects of big changes.",
+    "When the heart listens, even the wind makes sense.",
+    "A grateful mind turns routine into a ritual.",
+    "Patience is the bridge between seed and bloom.",
+    "Light travels far; so does a kind word."
+  ];
+  const todayIndex=Math.floor((new Date()).getTime()/(1000*60*60*24))%quotes.length;
+  const quoteEl=document.getElementById('daily-quote');
+  if(quoteEl){quoteEl.textContent="“"+quotes[todayIndex]+"”";}
+</script>
 </body>
 </html>
