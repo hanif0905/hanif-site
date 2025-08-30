@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" class="index">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Welcome to Hanif’s World</title>
-<link rel="stylesheet" href="css/style.css"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Welcome to Hanif’s World</title>
+  <meta name="description" content="A place for thoughts, learning, faith, and little sparks of joy."/>
+  <link rel="stylesheet" href="css/style.css"/>
 </head>
-<body>
+<body class="index">
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
+<!-- ===== HEADER ===== -->
 <header>
   <div class="header-wrapper">
     <div class="left-group">
-      <button id="menu-btn" class="menu-btn">☰</button>
+      <button id="menu-btn" class="menu-btn" aria-label="Toggle menu">☰</button>
     </div>
     <h1 class="site-logo"><a href="index.html">Hanif’s World</a></h1>
     <nav id="dropdown-menu">
@@ -26,34 +28,121 @@
       </ul>
     </nav>
     <div class="right-group">
-      <input id="search-input" class="search-input" type="search" placeholder="Search…"/>
+      <input id="search-input" class="search-input" type="search" placeholder="Search…" aria-label="Search"/>
     </div>
   </div>
 </header>
 
+<!-- ===== MAIN CONTENT ===== -->
 <main id="main-content">
+
+  <!-- Hero Section -->
   <section class="hero">
     <h1>Welcome to Hanif’s World</h1>
     <p class="subline">A place for thoughts, learning, faith, and little sparks of joy.</p>
     <blockquote>“Every sunrise is a fresh page in the story of our lives.”</blockquote>
   </section>
 
+  <!-- Quick Peek Navigation -->
   <section class="peek-nav">
-    <a class="card" href="quiet-bench.html"><div class="icon">🌿</div><h3>Quiet Bench</h3><p>Reflections for the soul</p></a>
-    <a class="card" href="study-table.html"><div class="icon">📚</div><h3>Study Table</h3><p>Notes and learnings</p></a>
-    <a class="card" href="little-studio.html"><div class="icon">🎥</div><h3>Little Studio</h3><p>Visual stories</p></a>
-    <a class="card" href="pocket-quotes.html"><div class="icon">✨</div><h3>Pocket Quotes</h3><p>Words to carry</p></a>
-    <a class="card" href="pathways.html"><div class="icon">🛤️</div><h3>Pathways</h3><p>Journeys & detours</p></a>
-    <a class="card" href="about-hanif.html"><div class="icon">🌸</div><h3>About Hanif</h3><p>Meet the mind</p></a>
+    <a class="card" href="quiet-bench.html">
+      <div class="icon">🌿</div>
+      <h3>Quiet Bench</h3>
+      <p>Reflections for the soul</p>
+    </a>
+    <a class="card" href="study-table.html">
+      <div class="icon">📚</div>
+      <h3>Study Table</h3>
+      <p>Notes and learnings</p>
+    </a>
+    <a class="card" href="little-studio.html">
+      <div class="icon">🎥</div>
+      <h3>Little Studio</h3>
+      <p>Visual stories</p>
+    </a>
+    <a class="card" href="pocket-quotes.html">
+      <div class="icon">✨</div>
+      <h3>Pocket Quotes</h3>
+      <p>Words to carry</p>
+    </a>
+    <a class="card" href="pathways.html">
+      <div class="icon">🛤️</div>
+      <h3>Pathways</h3>
+      <p>Journeys & detours</p>
+    </a>
+    <a class="card" href="about-hanif.html">
+      <div class="icon">🌸</div>
+      <h3>About Hanif</h3>
+      <p>Meet the mind</p>
+    </a>
   </section>
 
+  <!-- Featured Section -->
   <section class="featured">
     <div class="featured-item">
       <h2>Latest Video</h2>
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Latest video"></iframe>
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              title="Latest video" allowfullscreen></iframe>
     </div>
     <div class="featured-item">
       <h2>Latest Quote</h2>
       <blockquote>“Life is a canvas — paint your path with purpose.”</blockquote>
     </div>
-  </section
+  </section>
+
+  <!-- Hanif Today Box -->
+  <section class="today-box">
+    <h2>Hanif Today</h2>
+    <p>I’m sipping mint tea and exploring small CSS micro‑animations. What tiny detail could you polish today?</p>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="soft-footer">
+  <p>Built with love, learning, and late nights by Hanif.</p>
+  <div class="social">
+    <a href="#"><img src="images/icon-youtube.svg" alt="YouTube"/></a>
+    <a href="#"><img src="images/icon-linkedin.svg" alt="LinkedIn"/></a>
+    <a href="#"><img src="images/icon-github.svg" alt="GitHub"/></a>
+  </div>
+  <button id="back-to-top" title="Back to top">↑</button>
+</footer>
+<footer class="page-copy">© 2025 Hanif’s Corner</footer>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+  // Toggle mobile menu
+  document.getElementById('menu-btn').addEventListener('click', () => {
+    document.getElementById('dropdown-menu').classList.toggle('open');
+  });
+
+  // Back-to-top visibility
+  const btt = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    document.body.classList.toggle('scrolled', window.scrollY > 100);
+  });
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Simple search routing
+  const routes = [
+    { k: ['quiet','bench'], url: 'quiet-bench.html' },
+    { k: ['study','table'], url: 'study-table.html' },
+    { k: ['studio','video'], url: 'little-studio.html' },
+    { k: ['quote','quotes'], url: 'pocket-quotes.html' },
+    { k: ['path','pathways'], url: 'pathways.html' },
+    { k: ['about','hanif'], url: 'about-hanif.html' }
+  ];
+  const s = document.getElementById('search-input');
+  s.addEventListener('keydown', e => {
+    if (e.key !== 'Enter') return;
+    e.preventDefault();
+    const t = s.value.trim().toLowerCase();
+    if (!t) return;
+    const hit = routes.find(r => r.k.some(w => t.includes(w)));
+    window.location.href = hit ? hit.url : 'index.html';
+  });
+</script>
+
+</body>
+</html>
