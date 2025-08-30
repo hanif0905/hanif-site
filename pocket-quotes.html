@@ -3,76 +3,27 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Pocket Quotes – Hanif’s World</title>
+  <title>Pocket Quotes – Words to Carry</title>
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body class="pocket-quotes">
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<header>
-  <div class="header-wrapper inner-header">
-    <div class="left-group">
-      <button id="menu-btn" class="menu-btn" aria-label="Toggle menu">☰</button>
-    </div>
-
-    <nav id="dropdown-menu" class="dropdown-menu">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="quiet-bench.html">Quiet Bench</a></li>
-        <li><a href="study-table.html">Study Table</a></li>
-        <li><a href="little-studio.html">Little Studio</a></li>
-        <li><a href="pocket-quotes.html">Pocket Quotes</a></li>
-        <li><a href="pathways.html">Pathways</a></li>
-        <li><a href="about-hanif.html">About Hanif</a></li>
-      </ul>
-    </nav>
-
-    <div class="right-group">
-      <input id="search-input" class="search-input" type="search" placeholder="Search…" />
-    </div>
-  </div>
-</header>
+<header>…</header>
 
 <main id="main-content">
-  <h2 class="fade-in">Pocket Quotes</h2>
-  <div class="quotes-list fade-in" style="max-width:700px; margin:1.5rem auto; text-align:left;">
-    <blockquote>“The only limit to our realization of tomorrow is our doubts of today.”</blockquote>
-    <blockquote>“In the middle of every difficulty lies opportunity.”</blockquote>
-    <blockquote>“Kindness is a language which the deaf can hear and the blind can see.”</blockquote>
-    <!-- add more quotes here as you like -->
-  </div>
+  <section style="padding:2rem 1rem;">
+    <h1>Pocket Quotes</h1>
+    <div style="display:grid;gap:1rem;max-width:500px;margin:1rem auto;">
+      <blockquote style="background:var(--pink);padding:1rem;border-radius:var(--radius);">“The only limit to our realization of tomorrow is our doubts of today.”</blockquote>
+      <blockquote style="background:var(--mint);padding:1rem;border-radius:var(--radius);">“In the middle of every difficulty lies opportunity.”</blockquote>
+      <blockquote style="background:var(--beige);padding:1rem;border-radius:var(--radius);">“Kindness is a language which the deaf can hear and the blind can see.”</blockquote>
+    </div>
+  </section>
 </main>
 
-<footer class="soft-footer">
-  <p>Built with love, learning, and late nights by Hanif.</p>
-  <div class="social">
-    <a href="#"><img src="images/icon-youtube.svg" alt="YouTube"/></a>
-    <a href="#"><img src="images/icon-linkedin.svg" alt="LinkedIn"/></a>
-    <a href="#"><img src="images/icon-github.svg" alt="GitHub"/></a>
-  </div>
-  <button id="back-to-top">↑</button>
-</footer>
-<footer>© 2025 Hanif’s Corner</footer>
-
-<script>
-const btn=document.getElementById('back-to-top');
-window.addEventListener('scroll',()=>{document.body.classList.toggle('scroll-down',window.scrollY>200);});
-btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-document.getElementById('menu-btn').addEventListener('click',()=>{document.getElementById('dropdown-menu').classList.toggle('open');});
-</script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
-<script>
-(function(){
-const input=document.getElementById('search-input');let dataPromise;
-input.addEventListener('keydown',async e=>{
- if(e.key!=='Enter')return;e.preventDefault();
- const term=input.value.trim();if(!term)return;
- dataPromise=dataPromise||fetch('/data/search.json').then(r=>r.json());
- const data=await dataPromise;
- const results=new Fuse(data,{keys:['title','description'],threshold:0.3}).search(term);
- window.location.href=results.length?results[0].item.url:'index.html';
-});
-})();
-</script>
+<footer class="soft-footer">…</footer>
+<footer class="page-copy">© 2025 Hanif’s Corner</footer>
+<script>…</script>
 </body>
 </html>
